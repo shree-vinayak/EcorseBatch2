@@ -1,0 +1,19 @@
+1.  what is DispatcherServlet ?
+Ans:-   DispatcherServlet is  a frontcontroller. Any Request which is coming to our server first handle by dispatcher servlet then dispatcher servlet dispatcher that request to one of the controller who can actually handle that request.
+
+2.  what is an ApplicationContext And WebApplicationContext  ?
+Ans:-  BeanFactory, ApplicationContext, WebApplicationContext all are basically spring containers, 
+ BeanFactory ======>ApplicationContext ======> WebApplicationContext
+ basically BeanFactory and ApplicatioContext are core containers and WebApplicationContext is design to handle java web based application. 
+ 
+
+4.  What is ViewResolver ?\
+Ans:-  The DispatcherServlet will use this ViewResolver, Basically we  do  not hardcoded view name in our controller, we  just return the some string from controller, then the DispatcherServlet use the ViewResolver to find the exact view location and view extension. p
+
+5.  DispatcherServlet has its own WebApplicationContext, true or false And can we have multiple DispatcherServlet configured in one web application?
+This statement is true.
+
+6.  Explain how spring mvc works in xml way. 
+7.  tell me the  10 spring core  annotation ?
+8.  Can We have multiple ServletContext Object for one web application?
+9. What is the use of ContextLoaderListner ?
