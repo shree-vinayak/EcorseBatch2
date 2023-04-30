@@ -6,19 +6,19 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		// TODO Auto-generated method stub
-		return null;
+		Class<?>[] classe = { AppContext.class };
+		return classe;
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		Class[] classes= {AppConfig.class}; 
+		Class<?>[] classes = { AppConfig.class };
 		return classes;
 	}
 
 	@Override
 	protected String[] getServletMappings() {
-	String[] urlMapping= {"/"};
+		String[] urlMapping = { "/" };
 		return urlMapping;
 	}
 
