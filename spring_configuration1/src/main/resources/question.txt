@@ -7,7 +7,7 @@ Ans:-  BeanFactory, ApplicationContext, WebApplicationContext all are basically 
  basically BeanFactory and ApplicatioContext are core containers and WebApplicationContext is design to handle java web based application. 
  
 
-4.  What is ViewResolver ?\
+4.  What is ViewResolver ?
 Ans:-  The DispatcherServlet will use this ViewResolver, Basically we  do  not hardcoded view name in our controller, we  just return the some string from controller, then the DispatcherServlet use the ViewResolver to find the exact view location and view extension. p
 
 5.  DispatcherServlet has its own WebApplicationContext, true or false And can we have multiple DispatcherServlet configured in one web application?

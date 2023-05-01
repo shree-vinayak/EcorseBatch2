@@ -16,7 +16,7 @@ import com.sv.entity.UserData;
 import com.sv.service.UserDataService;
 
 @RestController
-public class TestController {
+public class UserController {
 
 	@Autowired
 	private UserDataService userDataService;
