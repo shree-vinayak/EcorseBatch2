@@ -11,6 +11,11 @@ import javax.persistence.Table;
 @Table(name = "loginentity")
 public class LoginEntity implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "username")
 	private String username;

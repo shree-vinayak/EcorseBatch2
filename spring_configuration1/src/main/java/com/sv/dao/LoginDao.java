@@ -15,7 +15,7 @@ public class LoginDao {
 
 	public LoginEntity getLoginEntityById(String username) {
 		Session session = sessionFactory.getCurrentSession();
-		LoginEntity loginEntity = (LoginEntity) session.load(LoginEntity.class, username);
+		LoginEntity loginEntity = (LoginEntity) session.get(LoginEntity.class, username);
 		System.out.println("===loginEntity loaded successfully, loginEntity details=== " + loginEntity);
 		return loginEntity;
 
