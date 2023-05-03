@@ -7,11 +7,15 @@ import { LoginComponent } from './Auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './Services/login.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminHomeComponent } from './Admin/admin-home/admin-home.component';
+import { StudentHomeComponent } from './Student/student-home/student-home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    AdminHomeComponent,
+    StudentHomeComponent
   ],
   imports: [
     BrowserModule,
