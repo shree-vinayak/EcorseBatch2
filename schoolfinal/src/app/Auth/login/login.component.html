@@ -1,0 +1,10 @@
+<h1> Student Login Form </h1>
+<form [formGroup]="loginForm">
+    <div class="container">
+        <label>Username : </label>
+        <input type="text" placeholder="Enter Username" name="username" formControlName="username">
+        <label>Password : </label>
+        <input type="password" placeholder="Enter Password" name="password" formControlName="password">
+        <button type="submit" on-click="submitForm()">Login</button>
+    </div>
+</form>
