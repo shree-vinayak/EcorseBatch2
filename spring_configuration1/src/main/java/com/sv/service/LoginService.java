@@ -30,7 +30,7 @@ public class LoginService {
 		}
 		else
 		{
-			studentLogin(loginEntity, responseWrapper);
+		  studentLogin(loginEntity, responseWrapper);
 		}
 		
 		return responseWrapper;
@@ -42,6 +42,7 @@ public class LoginService {
 		try {
 			LoginEntity loginEntityFromDb = logindao.getLoginEntityById(loginEntity.getUsername());
 			if (loginEntityFromDb != null && loginEntityFromDb.getPassword().equals(loginEntity.getPassword())) {
+				
 				responseWrapper.setData(loginEntityFromDb);
 				responseWrapper.setMessage("Authenticate Successfully.");
 				responseWrapper.setStatus(true);

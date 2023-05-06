@@ -10,8 +10,12 @@ export class AdminService {
 
 
   public saveStudent(studentObj: any) {
-
     return this.http.post('http://localhost:8080/spring_configuration1/saveStudentInfo', studentObj);
+  }
 
+
+  public getAllStudentInfo()
+  {
+    return this.http.get('http://localhost:8080/spring_configuration1/getAllStudentInfo')
   }
 }

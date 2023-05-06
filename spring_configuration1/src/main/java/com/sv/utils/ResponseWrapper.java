@@ -5,6 +5,17 @@ public class ResponseWrapper {
 	private Object data;
 	private String message;
 	private boolean status;
+	
+	public ResponseWrapper() {
+		super();
+	}
+
+	public ResponseWrapper(Object data, String message, boolean status) {
+		super();
+		this.data = data;
+		this.message = message;
+		this.status = status;
+	}
 
 	public Object getData() {
 		return data;

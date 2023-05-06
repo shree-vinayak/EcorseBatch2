@@ -12,6 +12,7 @@ import { StudentHomeComponent } from './Student/student-home/student-home.compon
 import { AdminHeaderComponent } from './Admin/admin-header/admin-header.component';
 import { StudentHeaderComponent } from './Student/student-header/student-header.component';
 import { AdminService } from './Services/admin.service';
+import { ViewStudentListComponent } from './Admin/view-student-list/view-student-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AdminService } from './Services/admin.service';
     AdminHomeComponent,
     StudentHomeComponent,
     AdminHeaderComponent,
-    StudentHeaderComponent
+    StudentHeaderComponent,
+    ViewStudentListComponent
   ],
   imports: [
     BrowserModule,
