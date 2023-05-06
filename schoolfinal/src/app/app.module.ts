@@ -9,13 +9,18 @@ import { LoginService } from './Services/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminHomeComponent } from './Admin/admin-home/admin-home.component';
 import { StudentHomeComponent } from './Student/student-home/student-home.component';
+import { AdminHeaderComponent } from './Admin/admin-header/admin-header.component';
+import { StudentHeaderComponent } from './Student/student-header/student-header.component';
+import { AdminService } from './Services/admin.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AdminHomeComponent,
-    StudentHomeComponent
+    StudentHomeComponent,
+    AdminHeaderComponent,
+    StudentHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +29,7 @@ import { StudentHomeComponent } from './Student/student-home/student-home.compon
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [LoginService],
+  providers: [LoginService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

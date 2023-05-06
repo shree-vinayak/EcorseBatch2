@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sv.entity.LoginEntity;
@@ -19,7 +20,8 @@ public class LoginEntityController {
 	private LoginService loginservice;
 
 	@PostMapping(name = "/login", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseWrapper authenticateTeacher(@RequestBody LoginEntity loginEntity) {
-		return loginservice.authenticate(loginEntity);
+	public ResponseWrapper authenticateTeacher(@RequestBody LoginEntity loginEntity,
+			@RequestParam("logintype")boolean logintype) {
+		return loginservice.authenticate(loginEntity,logintype);
 	}
 }

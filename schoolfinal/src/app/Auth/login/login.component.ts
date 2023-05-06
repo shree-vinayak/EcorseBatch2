@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required])
+      password: new FormControl('', [Validators.required]),
+      logintype:new FormControl(false)
     });
   }
 
@@ -33,14 +34,12 @@ export class LoginComponent implements OnInit {
     this.loginservice.authenticate(this.loginForm.value).subscribe((response: any) => {
       debugger
       if (response.status) {
+        sessionStorage.setItem('role', response.data.role);
+        sessionStorage.setItem('username', response.data.username);
         if (response.data.role === 'ADMIN') {
-          sessionStorage.setItem('role', response.data.role);
-          sessionStorage.setItem('username', response.data.username);
           this.router.navigate(['admin-home']);
         }
         else {
-          sessionStorage.setItem('role', response.data.role);
-          sessionStorage.setItem('username', response.data.username);
           this.router.navigate(['student-home'])
         }
       }

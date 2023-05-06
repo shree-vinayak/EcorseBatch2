@@ -1,2 +1,12 @@
-<router-outlet>
-</router-outlet>
+<div class="container">
+    <div *ngIf="loginservice.isUserLoggedIn()&& loginservice.isAdminLoggedIn()" class="header" style="margin-bottom: 81px">
+        <app-admin-header></app-admin-header>
+    </div>
+    <div *ngIf="loginservice.isUserLoggedIn() && loginservice.isStudentLoggedIn()" class="header" style="margin-bottom: 81px">
+        <app-student-header></app-student-header>
+    </div>
+    <div class="body">
+        <router-outlet></router-outlet>
+    </div>
+
+</div>

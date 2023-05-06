@@ -1,6 +1,6 @@
 package com.sv.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,10 +46,10 @@ public class StudentInfo {
 	private String phoneno;
 
 	@Column(name = "dateofbirth")
-	private Date dateofbirth;
+	private LocalDate dateofbirth;
 
 	@Column(name = "dateofaddmission")
-	private Date dateofaddmission;
+	private LocalDate dateofaddmission;
 
 	public Integer getRollNo() {
 		return rollNo;
@@ -123,19 +123,19 @@ public class StudentInfo {
 		this.phoneno = phoneno;
 	}
 
-	public Date getDateofbirth() {
+	public LocalDate getDateofbirth() {
 		return dateofbirth;
 	}
 
-	public void setDateofbirth(Date dateofbirth) {
+	public void setDateofbirth(LocalDate dateofbirth) {
 		this.dateofbirth = dateofbirth;
 	}
 
-	public Date getDateofaddmission() {
+	public LocalDate getDateofaddmission() {
 		return dateofaddmission;
 	}
 
-	public void setDateofaddmission(Date dateofaddmission) {
+	public void setDateofaddmission(LocalDate dateofaddmission) {
 		this.dateofaddmission = dateofaddmission;
 	}
 
@@ -145,6 +145,14 @@ public class StudentInfo {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "StudentInfo [rollNo=" + rollNo + ", name=" + name + ", fathername=" + fathername + ", role=" + role
+				+ ", username=" + username + ", password=" + password + ", studentclass=" + studentclass + ", age="
+				+ age + ", address=" + address + ", phoneno=" + phoneno + ", dateofbirth=" + dateofbirth
+				+ ", dateofaddmission=" + dateofaddmission + "]";
 	}
 
 }
