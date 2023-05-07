@@ -57,4 +57,14 @@ public class LoginEntity implements Serializable {
 		return "LoginEntity [username=" + username + ", password=" + password + ", role=" + role + "]";
 	}
 
+	public LoginEntity(String username, String password, String role) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.role = role;
+	}
+
+	public LoginEntity() {
+	}
+
 }
