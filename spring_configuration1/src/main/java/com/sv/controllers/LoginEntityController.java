@@ -3,6 +3,7 @@ package com.sv.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,5 +24,11 @@ public class LoginEntityController {
 	public ResponseWrapper authenticateTeacher(@RequestBody LoginEntity loginEntity,
 			@RequestParam("logintype")boolean logintype) {
 		return loginservice.authenticate(loginEntity,logintype);
+	}
+	
+	@GetMapping(name = "/")
+	public String applicationStatus(
+			) {
+		return "Your Application is Up";
 	}
 }

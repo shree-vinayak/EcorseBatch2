@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sv.dao.StudentDao;
 import com.sv.entity.StudentInfo;
 import com.sv.utils.ResponseWrapper;
+import com.sv.utils.SearchFormDTO;
 
 @Service
 public class StudentService {
@@ -56,6 +57,21 @@ public class StudentService {
 		ResponseWrapper wrapper = null;
 
 		List<Object> studentInfoListFromDb = studentDao.getAllStudentInfoList();
+		if (!studentInfoListFromDb.isEmpty()) {
+			wrapper = new ResponseWrapper(studentInfoListFromDb, "Fetch Student List Successfully", true);
+		} else {
+			wrapper = new ResponseWrapper(null, "No Data Found", false);
+		}
+		return wrapper;
+	}
+
+		
+		
+		
+		@Transactional
+		public Object getStudentInfoForPassedCriteria(SearchFormDTO searchFormDTO) {
+			ResponseWrapper wrapper = null;
+			List<Object> studentInfoListFromDb = studentDao.getAllStudentInfoForSearchCriteria(searchFormDTO);
 		if (!studentInfoListFromDb.isEmpty()) {
 			wrapper = new ResponseWrapper(studentInfoListFromDb, "Fetch Student List Successfully", true);
 		} else {

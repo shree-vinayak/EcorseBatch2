@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sv.entity.StudentInfo;
 import com.sv.service.StudentService;
+import com.sv.utils.SearchFormDTO;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -30,5 +31,16 @@ public class StudentInfoController {
 	{
 		return studentService.getAllStudentInfoFromService();
 	}
+	
+	
+	
+	@PostMapping(value = "/getStuInfoForSearchCriteria", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Object getStuInfoForSearchCriteria(@RequestBody SearchFormDTO searchFormDTO) {
+
+		return studentService.getStudentInfoForPassedCriteria(searchFormDTO);
+
+	}
+	
+	
 
 }
