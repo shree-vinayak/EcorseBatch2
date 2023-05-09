@@ -45,7 +45,14 @@ export class AdminHomeComponent implements OnInit {
     }
 
     this.adminService.saveStudent(this.adminValidation.value).subscribe((response: any) => {
-      console.log('saved Student Info', response);
+      if(response.status)
+      {
+        this.adminValidation.reset();
+
+      }
+      else{
+        alert(response.message);
+      }
     })
 
 

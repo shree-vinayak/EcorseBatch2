@@ -1,0 +1,79 @@
+<div class="formdata">
+    <h2 align="center">Student Search Form</h2>
+
+    <div class="container" align="center">
+        <form [formGroup]="searchForm">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" formControlName="name">
+
+            </div>
+            <div>
+                <label for="username"> Username </label>
+                <input type="email" id="username" name="username" placeholder="Enter Username" formControlName="username" />
+
+            </div>
+            <div>
+                <label for="studentclass"> Student Class </label>
+                <select id="studentclass" name="studentclass" formControlName="studentclass">
+                    <option value="">--Select Student Class--</option>
+                    <option value="1">1 st</option>
+                    <option value="2">2 nd</option>
+                    <option value="3">3 rd</option>
+                    <option value="4">4 th</option>
+                    <option value="5">5 th</option>
+                    <option value="6">6 th</option>
+                    <option value="7">7 th</option>
+                    <option value="8">8 th</option>
+                    <option value="9">9 th</option>
+                    <option value="10">10 th</option>
+                    <option value="11">11 th</option>
+                    <option value="12">12 th</option>
+                </select>
+
+            </div>
+            <br>
+            <br>
+            <input type="submit" on-click="submitForm()" value="Submit">
+        </form>
+    </div>
+</div>
+<div class="tabledata" style="border-collapse: collapse; text-align: center">
+    <p *ngIf="studentList==null">
+        Data is not available inside the database
+
+    </p>
+    <table border="1" *ngIf="studentList">
+        <thead>
+            <tr>
+                <th>Sr. No.</th>
+                <th>rollNo</th>
+                <th>name</th>
+                <th>fathername</th>
+                <th>username</th>
+                <th>studentclass</th>
+                <th>age</th>
+                <th>address</th>
+                <th>phoneno</th>
+                <th>dateofbirth</th>
+                <th>dateofaddmission</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let studentInfo of studentList; index as i">
+                <td>{{i+1}}</td>
+                <td>{{studentInfo.rollNo}}</td>
+                <td>{{studentInfo.name}}</td>
+                <td>{{studentInfo.fathername}}</td>
+                <td>{{studentInfo.username}}</td>
+                <td>{{studentInfo.studentclass}}</td>
+                <td>{{studentInfo.age}}</td>
+                <td>{{studentInfo.address}}</td>
+                <td>{{studentInfo.phoneno}}</td>
+                <td>{{studentInfo.dateofbirth}}</td>
+                <td>{{studentInfo.dateofaddmission}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

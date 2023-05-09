@@ -14,6 +14,12 @@ export class ViewStudentListComponent implements OnInit {
   constructor(private adminService:AdminService) { }
 
   ngOnInit() {
+
+    this.searchForm= new FormGroup({
+      name:new FormControl(),
+      username:new FormControl(),
+      studentclass:new FormControl()
+    })
  
     
 
@@ -28,7 +34,24 @@ export class ViewStudentListComponent implements OnInit {
           alert(response.message);
         }
     });
+    
 
+  }
+
+  submitForm()
+  {
+    this.studentList=null;
+    this.adminService.getAllStuInfoOnSearchCriatria(this.searchForm.value).subscribe((response:any)=>
+    {
+        if(response.status)
+        {
+          this.studentList= response.data; 
+          console.log(this.studentList);
+        }
+        else{
+          alert(response.message);
+        }
+    });
   }
 
 }

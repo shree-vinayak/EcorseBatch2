@@ -1,0 +1,13 @@
+.formdata {
+    width: 30%;
+    border: 1px solid black;
+    min-height: 500px;
+    float: left;
+}
+
+.tabledata {
+    width: 65%;
+    border: 1px solid black;
+    min-height: 500px;
+    float: right;
+}
