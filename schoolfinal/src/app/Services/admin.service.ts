@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,18 +11,19 @@ export class AdminService {
 
 
   public saveStudent(studentObj: any,) {
-    return this.http.post('http://localhost:8080/spring_configuration1/saveStudentInfo', studentObj);
+    return this.http.post(environment.baseurl+'saveStudentInfo', studentObj);
+
   }
 
 
   public getAllStudentInfo()
   {
-    return this.http.get('http://localhost:8080/spring_configuration1/getAllStudentInfo')
+    return this.http.get(environment.baseurl+'getAllStudentInfo')
   }
 
   getAllStuInfoOnSearchCriatria(searchFormValue:any)
   {
-    return this.http.post('http://localhost:8080/spring_configuration1/getStuInfoForSearchCriteria',searchFormValue)
+    return this.http.post(environment.baseurl+'getStuInfoForSearchCriteria',searchFormValue)
   }
   
 }
