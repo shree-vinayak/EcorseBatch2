@@ -5,6 +5,7 @@ public class SearchFormDTO {
 	private String name;
 	private String username;
 	private Integer studentclass;
+	private String[] selectedColumnsValue;
 
 	public String getName() {
 		return name;
@@ -29,5 +30,16 @@ public class SearchFormDTO {
 	public void setStudentclass(Integer studentclass) {
 		this.studentclass = studentclass;
 	}
+
+	public String[] getSelectedColumnsValue() {
+		return selectedColumnsValue;
+	}
+
+	public void setSelectedColumnsValue(String[] selectedColumnsValue) {
+		this.selectedColumnsValue = selectedColumnsValue;
+	}
+	
+	
+	
 
 }

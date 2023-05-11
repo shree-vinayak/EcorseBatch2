@@ -97,6 +97,23 @@ public class StudentDao {
 					map.put("username", searchFormDTO.getUsername());
 				}
 			}
+			if(searchFormDTO.getSelectedColumnsValue().length>=1 )
+			{
+				querBuilder.append(" order by ");
+				for(int i=0; i<searchFormDTO.getSelectedColumnsValue().length;i++)
+				{
+					if(i==(searchFormDTO.getSelectedColumnsValue().length-1))
+					{
+						querBuilder.append(searchFormDTO.getSelectedColumnsValue()[i]);
+				    }else
+				    {
+				    	querBuilder.append(searchFormDTO.getSelectedColumnsValue()[i] +" ,");
+				    }
+				}
+			}
+			
+			
+			
 			Session session = factory.getCurrentSession();
 			Query query = session.createQuery(querBuilder.toString());
 

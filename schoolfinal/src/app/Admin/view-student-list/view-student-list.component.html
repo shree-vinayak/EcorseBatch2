@@ -34,8 +34,21 @@
             </div>
             <br>
             <br>
+
             <input type="submit" on-click="submitForm()" value="Submit">
         </form>
+
+        <div class="columns">
+            <ul *ngFor="let col of columns; index as i">
+                <li on-click="AddColumnValue(i)">{{col}}</li>
+            </ul>
+
+        </div>
+        <div class="selectedcolumns">
+            <ul *ngFor="let col of selectedColumns; index as i">
+                <li>{{col}}</li>
+            </ul>
+        </div>
     </div>
 </div>
 <div class="tabledata" style="border-collapse: collapse; text-align: center">
