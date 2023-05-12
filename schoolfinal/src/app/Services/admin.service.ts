@@ -21,9 +21,16 @@ export class AdminService {
     return this.http.get(environment.baseurl+'getAllStudentInfo')
   }
 
-  getAllStuInfoOnSearchCriatria(searchFormValue:any)
+  public getAllStuInfoOnSearchCriatria(searchFormValue:any)
   {
     return this.http.post(environment.baseurl+'getStuInfoForSearchCriteria',searchFormValue)
+  }
+
+
+  public getStudentDetails(rollno:number,username:string)
+  {
+
+    return this.http.get(environment.baseurl+"getStudentDetails?rollno="+rollno+"&&username="+username);
   }
   
 }

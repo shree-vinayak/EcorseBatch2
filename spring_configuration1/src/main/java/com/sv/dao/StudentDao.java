@@ -111,9 +111,6 @@ public class StudentDao {
 				    }
 				}
 			}
-			
-			
-			
 			Session session = factory.getCurrentSession();
 			Query query = session.createQuery(querBuilder.toString());
 
@@ -128,5 +125,22 @@ public class StudentDao {
 			System.out.println("Some Exception Occured While Fetching Student List From Database:" + e.getMessage());
 			return null;
 		}
+	}
+
+	public StudentInfo getStudentDetails(Integer rollNo, String username) {
+		StudentInfo studentInfo = null;
+		if (username != null && rollNo!=null) {
+			Session session = factory.getCurrentSession();
+			Query query = session.createQuery("from StudentInfo s where s.username=:username and s.rollNo=:rollNo");
+			query.setParameter("username", username);
+			query.setParameter("rollNo", rollNo);
+			List<Object> studentList = query.getResultList();
+			if (!studentList.isEmpty()) {
+				studentInfo = (StudentInfo) studentList.get(0);
+			}
+			System.out.println("===student info from database === " + studentInfo);
+			return studentInfo;
+		}
+		return studentInfo;
 	}
 }

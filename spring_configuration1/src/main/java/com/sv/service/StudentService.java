@@ -80,4 +80,17 @@ public class StudentService {
 		return wrapper;
 	}
 
+		
+		@Transactional
+		public Object getStudentDetails(Integer rollNo, String username) {
+			ResponseWrapper wrapper = null;
+			StudentInfo studentInfoListFromDb = studentDao.getStudentDetails(rollNo,username);
+		if (studentInfoListFromDb!=null) {
+			wrapper = new ResponseWrapper(studentInfoListFromDb, "Fetch Student Details Successfully", true);
+		} else {
+			wrapper = new ResponseWrapper(null, "No Data Found", false);
+		}
+		return wrapper;
+		}
+
 }

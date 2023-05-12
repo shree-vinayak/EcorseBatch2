@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/Services/admin.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-student-list',
@@ -11,7 +12,7 @@ export class ViewStudentListComponent implements OnInit {
   searchForm:FormGroup=null;
 
   studentList:any=null;
-  constructor(private adminService:AdminService) { }
+  constructor(private adminService:AdminService,private route:Router) { }
 
 
   columns:string[]=['rollNo','name','username','age'];
@@ -64,6 +65,13 @@ export class ViewStudentListComponent implements OnInit {
           alert(response.message);
         }
     });
+  }
+
+
+  navigateToStudenDetails(studentInfo:any)
+  {
+    this.route.navigate(['/view-studentdetails',studentInfo.rollNo,studentInfo.username]);
+
   }
 
 }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sv.entity.StudentInfo;
@@ -38,6 +39,14 @@ public class StudentInfoController {
 	public Object getStuInfoForSearchCriteria(@RequestBody SearchFormDTO searchFormDTO) {
 
 		return studentService.getStudentInfoForPassedCriteria(searchFormDTO);
+
+	}
+	
+	
+	@GetMapping(value = "/getStudentDetails",  produces = MediaType.APPLICATION_JSON_VALUE)
+	public Object getStudentDetails(@RequestParam("rollno")Integer rollNo,
+			@RequestParam("username") String username) {
+		return studentService.getStudentDetails(rollNo,username);
 
 	}
 	

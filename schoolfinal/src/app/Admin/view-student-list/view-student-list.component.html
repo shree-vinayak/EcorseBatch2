@@ -70,6 +70,7 @@
                 <th>phoneno</th>
                 <th>dateofbirth</th>
                 <th>dateofaddmission</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -85,6 +86,7 @@
                 <td>{{studentInfo.phoneno}}</td>
                 <td>{{studentInfo.dateofbirth}}</td>
                 <td>{{studentInfo.dateofaddmission}}</td>
+                <td><button type="button" on-click="navigateToStudenDetails(studentInfo)">View</button></td>
             </tr>
         </tbody>
     </table>
