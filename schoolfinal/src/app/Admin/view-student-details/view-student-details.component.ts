@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AdminService } from 'src/app/Services/admin.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-view-student-details',
@@ -23,13 +23,22 @@ export class ViewStudentDetailsComponent implements OnInit {
         if(response.status)
         {
           this.studentDetail=response.data;
-         
         }
 
       })
 
     });
-
+    this.studentDetailsForm = new FormGroup({
+      name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern("^[a-zA-Z]+$")]),
+      fathername: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern("^[a-zA-Z]+$")]),
+      username: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
+      studentclass: new FormControl('', [Validators.required]),
+      age: new FormControl('', [Validators.required]),
+      address: new FormControl('', [Validators.required]),
+      phoneno: new FormControl('', [Validators.required]),
+      dateofbirth: new FormControl('', [Validators.required]),
+    });
    
 
 

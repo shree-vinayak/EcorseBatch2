@@ -1,0 +1,441 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin            : 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+#table-overflow {
+    width   : 100%;
+    overflow: auto;
+}
+
+
+table.center {
+    margin-left : auto;
+    margin-right: auto;
+}
+
+
+thead tr th {
+    background-color: black;
+    color           : white;
+    vertical-align  : middle;
+}
+
+td {
+    color         : black;
+    font-weight   : bolder;
+    font-size     : 1.4rem;
+    vertical-align: middle;
+}
+
+
+table.table-bordered>tbody>tr>td {
+    border: 1px solid white !important;
+}
+
+table.table-bordered>tbody>tr:hover {
+    background: gray !important;
+}
+
+/* 
+.form-check label {
+    margin: auto 10px;
+    cursor: pointer !important;
+} */
+
+.form-check input {
+    margin: 4px auto;
+}
+
+.form-check input:focus {
+    outline           : none;
+    border            : none;
+    box-shadow        : none;
+    -webkit-box-shadow: none;
+    background-color  : green !important;
+}
+
+
+/* CSS NEW */
+.content {
+    margin-top     : 5px;
+    padding        : 5px;
+    background     : rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    box-shadow     : inset 10px 10px 20px rgb(0 0 0 / 50%), 10px 10px 20px rgb(0 0 0 / 50%);
+}
+
+.noRecordFound {
+    margin-top : 60px;
+    text-align : center;
+    font-size  : 1.8rem;
+    font-weight: bold;
+}
+
+.noRecordFound span {
+    animation: recordNotfound 3s infinite;
+}
+
+@keyframes recordNotfound {
+    0% {
+        letter-spacing: 0.1px;
+        opacity       : 1;
+        color         : red;
+    }
+
+    100% {
+        letter-spacing: 3px;
+        opacity       : 0.2;
+        color         : gray;
+    }
+}
+
+.ctrlgrp {
+    text-align           : center;
+    width                : 50%;
+    margin               : 10px auto;
+    display              : grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.controls-input {
+    width       : 100%;
+    text-align  : left;
+    margin-right: 20px;
+}
+
+.controls-input input {
+    padding: 7px;
+    width  : 90%;
+    border : 1px solid black;
+}
+
+.control-label {
+    font-size: 1.3rem;
+    color    : black;
+    width    : 90%;
+    margin   : 7px auto;
+}
+
+.reports-div {
+    margin-top: 60px;
+    width     : 100%;
+}
+
+.reports-header {
+    margin-bottom: 30px;
+    position     : relative;
+}
+
+.reports-header button {
+    position      : absolute;
+    top           : 0;
+    right         : 2%;
+    width         : 12%;
+    padding       : 5px;
+    border        : none;
+    background    : green;
+    color         : white;
+    text-transform: uppercase;
+    border-radius : 0px;
+    letter-spacing: 2.2px;
+}
+
+.reports-header h4 {
+    font-size     : 1.8rem;
+    font-size     : bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.download {
+    cursor: pointer;
+}
+
+.download:hover {
+    background-color: beige;
+}
+
+.viewdatailbutton {
+    width         : 42%;
+    padding       : 4px;
+    border        : none;
+    border-radius : 0px;
+    background    : seagreen;
+    color         : white;
+    letter-spacing: 0.4px;
+    transition    : all 0.4s linear;
+    position      : relative;
+}
+
+.viewdatailbutton:hover {
+    background-color: green;
+}
+
+.dtmfpressed4 {
+    width     : 100%;
+    margin-top: 60px;
+}
+
+.exportBtn {
+    transition: all 0.3s linear;
+}
+
+.exportBtn:hover {
+    transform: scale(1.1);
+}
+
+.modal-header {
+    position      : relative;
+    text-align    : center;
+    text-transform: uppercase;
+    font-weight   : bolder;
+    letter-spacing: 0.3px;
+}
+
+.exportBtn2 {
+    position        : absolute;
+    top             : 50%;
+    right           : 5%;
+    transform       : translateY(-50%);
+    width           : 12%;
+    border          : none;
+    border-radius   : 0px;
+    background-color: green;
+    color           : white;
+    letter-spacing  : 0.2px;
+    transition      : all 0.3s linear;
+}
+
+.exportBtn2:hover {
+    transform: scale(1.1) translateY(-50%);
+}
+
+/* new css */
+
+form {
+    text-align: center;
+}
+
+.show {
+    opacity   : 1;
+    margin-top: -64px;
+}
+
+table>tbody>tr>td {
+    height: 0px !important;
+    border: 1px solid gray;
+}
+
+
+/* ================== */
+
+@media screen and (max-width:992px) {
+    .viewdatailbutton {
+        width: 100%;
+    }
+}
+
+@media (max-width:677px) {
+    .content {
+        width  : 100%;
+        padding: 15px 4px;
+    }
+
+    .ctrlgrp {
+        width: 100%;
+    }
+
+    .controls-input input {
+        width : 100%;
+        border: 1px solid black;
+    }
+}
+
+
+@media screen and (max-width:728px) {
+    .viewdatailbutton {
+        width: 100%;
+    }
+
+    .reports-header {
+        min-height: 80px;
+    }
+
+    .reports-header button {
+        position: absolute;
+        top     : 57%;
+        width   : 100%;
+        left    : 0;
+    }
+
+    .modal-header {
+        min-height   : 70px;
+        margin-bottom: 10px;
+    }
+
+    .exportBtn2 {
+        position: absolute;
+        top     : 90%;
+        width   : 100%;
+        left    : 0;
+    }
+}
+
+@media screen and (max-width:484px) {
+
+    .reports-header button {
+        position: absolute;
+        top     : 76%;
+    }
+}
+
+@media screen and (max-width:373px) {
+    .reports-header button {
+        position: absolute;
+        top     : 76%;
+    }
+
+    .modal-header {
+        min-height: 110px;
+    }
+
+}
+
+
+
+/* search bar design */
+
+.searchdiv {
+    display                  : grid;
+    grid-template-columns    : 1fr 1fr;
+    justify-content          : center;
+    width                    : 100%;
+    grid-gap                 : 16px;
+    align-items              : center;
+    height                   : 70px;
+    background               : teal;
+    color                    : white;
+    transition               : all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    border-bottom-left-radius: 71px;
+    border-top-right-radius  : 71px;
+}
+
+.searchdiv:hover {
+    border-bottom-left-radius : 0px;
+    border-top-right-radius   : 0px;
+    border-top-left-radius    : 71px;
+    border-bottom-right-radius: 71px;
+}
+
+#search {
+    height       : 100%;
+    margin       : auto;
+    border       : none;
+    padding      : 10px;
+    border-radius: 47px;
+    transition   : all 0.7s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+}
+
+#search:focus {
+    transform: scale(1.1);
+}
+
+.searchbox-head {
+    text-align    : right;
+    font-size     : 1.5rem;
+    letter-spacing: 1.2px;
+}
+
+.searchResult {
+    margin               : 30px auto;
+    display              : grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content      : center;
+    grid-row-gap         : 10px;
+}
+
+
+
+@media screen and (max-width:1239px) {
+    .searchbox-head {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width:992px) {
+    .searchdiv {
+        margin-top: 30px;
+    }
+
+    .searchResult {
+        grid-template-columns: 1fr;
+        grid-column-gap      : 30px;
+    }
+}
+
+@media screen and (max-width:738px) {
+    .searchdiv {
+        display              : grid;
+        grid-template-columns: 2fr 1.5fr;
+    }
+}
+
+@media screen and (max-width:660px) {
+    .searchdiv {
+        display              : grid;
+        grid-template-columns: 1fr;
+        grid-row-gap         : 10px;
+        padding              : 10px;
+        height               : auto;
+    }
+
+    .searchbox-head {
+        text-align: center;
+        font-size : 1.6rem;
+    }
+
+    .searchbox-input {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:548px) {
+    .searchbox-head {
+        text-align: center;
+        font-size : 1.1rem;
+
+    }
+
+    .searchdiv {
+        border-bottom-left-radius : 0px;
+        border-top-right-radius   : 0px;
+        border-top-left-radius    : 0px;
+        border-bottom-right-radius: 0px;
+    }
+
+    .searchdiv:hover {
+        border-bottom-left-radius : 0px;
+        border-top-right-radius   : 0px;
+        border-top-left-radius    : 0px;
+        border-bottom-right-radius: 0px;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .searchResult {
+        grid-template-columns: 1fr;
+        grid-column-gap      : 30px;
+    }
+
+    .outgoingSearchResult {
+        margin-bottom: 30px;
+    }
+}

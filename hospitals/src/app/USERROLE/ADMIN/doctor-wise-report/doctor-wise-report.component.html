@@ -1,0 +1,236 @@
+<app-admin-header></app-admin-header>
+<div class="wrapper" appNoRightClick>
+    <div class="container-fluid">
+        <div class="outerContent">
+
+            <app-admin-sidebar></app-admin-sidebar>
+
+            <div class="col-md-9">
+                <div class="content">
+                    <div
+                        style="text-align: center;color: black;text-transform: uppercase;font-weight: bolder;letter-spacing: 0.4px;margin-bottom:18px">
+                        <h4>Doctor Wise Summary Report For Date Range</h4>
+                    </div>
+                    <form [formGroup]="dateRangeForm">
+                        <div class="ctrlgrp">
+                            <div class="label-div">
+                                <label class="control-label" for="basicinput">Select Start Date</label>
+                            </div>
+                            <div class="controls-input">
+                                <input type="text" class="span6" id="startDate" formControlName='startDate' bsDatepicker
+                                    placeholder="Choose Date For Incoming Calls Count" (ngModelChange)="resetEndDate()"
+                                    [bsConfig]="{ isAnimated: true ,adaptivePosition: true, dateInputFormat: 'DD-MMM-YYYY'}"
+                                    [ngClass]="{ 'is-invalid': submitted && f1.startDate.errors }"
+                                    [maxDate]="todayDate" />
+                                <div *ngIf="submitted && f1.startDate.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.startDate.errors.required">
+                                        Date is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ctrlgrp">
+                            <div class="label-div">
+                                <label class="control-label" for="basicinput">Select End Date</label>
+                            </div>
+                            <div class="controls-input">
+                                <input type="text" class="span6" id="endDate" formControlName='endDate' bsDatepicker
+                                    placeholder="Choose Date For Incoming Calls Count"
+                                    (ngModelChange)="getDoctorWiseSummaryReport()"
+                                    [bsConfig]="{ isAnimated: true ,adaptivePosition: true, dateInputFormat: 'DD-MMM-YYYY'}"
+                                    [ngClass]="{ 'is-invalid': submitted && f1.endDate.errors }"
+                                    [minDate]="f1.startDate.value" />
+                                <div *ngIf="submitted && f1.endDate.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.endDate.errors.required">
+                                        Date is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div *ngIf="doctorSummaryResp===null" class="noRecordFound">
+                    <span>No Record Found Between This Date Range</span>
+                </div>
+
+                <!-- incoming outgoing calls report -->
+
+                <div *ngIf="doctorSummaryResp" class="reports-div">
+                    <div class="text-center reports-header">
+                        <h4>Doctor Wise Summary Report</h4>
+                        <button (click)="exportAsXsls(doctorSummaryResp,'Doctor Wise Summary Report')" class="exportBtn"
+                            title="Download reprot in excel">Export</button>
+                    </div>
+
+                    <div class="table-overflow" id="table-overflow">
+                        <table class="table table-responsive table-bordered custab">
+                            <thead>
+                                <tr>
+                                    <th>Sr.No.</th>
+                                    <th>Doctors Name</th>
+                                    <th>Patient Count</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of doctorSummaryResp,let i = index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{data.doctorname}}</td>
+                                    <td (click)="getAllPatientForDoctor(data.doctorname)">{{data.count}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+            <!--/.span9-->
+        </div>
+    </div>
+    <!--/.container-->
+</div>
+<!--/.wrapper-->
+
+<!-- incoming modals -->
+
+<!-- <div id="myModal12" class="modal fade" *ngIf='showModelIncoming' role="dialog" [ngClass]="{'show':showModelIncoming}"
+    style="margin-top:-135px;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="text-align: center;text-transform: uppercase;font-weight: bolder;
+            letter-spacing: 0.3px;height: auto;margin-bottom: 50px;">
+                <div style="width: 100%;margin-bottom: 5px;">
+                    <button type="button" class="close" data-dismiss="modal" (click)="close()">&times;</button>
+                </div>
+                <h4 class="modal-title">Incomin Call Report For Agents </h4>
+                <h4 class="modal-user-heading">Username : {{incomingCallUser}}</h4>
+                <button (click)="exportAsXsls(incomingCallForUserResp.data,'incoming_call__details_for_specific_agent')"
+                    class="exportBtn2" title="Download reprot in excel">Export</button>
+
+            </div>
+            <div class="modal-body" style="height: 405px;">
+                <div class="box-body">
+                    <div style="width:100%;height: 56vh;overflow-y: auto;" class="table-overflow" id="table-overflow">
+                        <table class="table table-bordered" style="overflow:scroll ;">
+                            <thead>
+                                <tr>
+                                    <th>Sr.No.</th>
+                                    <th>Call Date</th>
+                                    <th>Length in Seconds</th>
+                                    <th>Phone Number</th>
+                                    <th>Comments</th>
+                                    <th>Queue Seconds</th>
+                                    <th>Recording</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let data of incomingCallForUserResp.data,let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{data.call_date}}</td>
+                                    <td>{{data.length_in_sec}}</td>
+                                    <td>{{data.phone_number}}</td>
+                                    <td>{{data.comments}}</td>
+                                    <td>{{data.queue_seconds}}</td>
+                                    <td><button title="Download Recording"><i class="fa fa-download"
+                                                aria-hidden="true"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><br>
+
+
+                </div>
+            </div>
+
+            <div class="modal-footer" style="padding: 30px;">
+                <button type="button" style="margin-top: 35px;" class="btn btn-default" (click)="close()"
+                    data-dismiss="modal">Close</button>
+            </div>
+
+
+        </div>
+    </div>
+</div> -->
+
+<!-- outgoing modal -->
+
+
+<!-- <div id="myModal11" class="modal fade" *ngIf='showModelOutgoing' role="dialog" [ngClass]="{'show':showModelOutgoing}"
+    style="margin-top:-135px;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="text-align: center;text-transform: uppercase;font-weight: bolder;
+            letter-spacing: 0.3px;height: auto;margin-bottom: 50px;">
+                <div style="width: 100%;margin-bottom: 5px;">
+                    <button type="button" class="close" data-dismiss="modal" (click)="close()">&times;</button>
+                </div>
+                <h4 class="modal-title">Outgoing Call Report For Agents </h4>
+                <h4 class="modal-user-heading">Username : {{outgoingCallUser}}</h4>
+                <button (click)="exportAsXsls(outgoingCallForUserResp.data,'outgoing_call_details_for_specific_agent')"
+                    class="exportBtn2" title="Download reprot in excel">Export</button>
+
+            </div>
+            <div class="modal-body" style="height: 405px;">
+                <div class="box-body">
+                    <div style="width:100%;height: 56vh;overflow-y: scroll;">
+                        <table class="table table-bordered" style="overflow:scroll ;">
+                            <thead>
+                                <tr>
+                                    <th>Sr.No.</th>
+                                    <th>Call Date</th>
+                                    <th>Length in Seconds</th>
+                                    <th>Phone Number</th>
+                                    <th>Phone Code</th>
+                                    <th>Comments</th>
+                                    <th>Processed</th>
+                                    <th>User Group</th>
+                                    <th>Term Reason</th>
+                                    <th>Alt Dial</th>
+                                    <th>Called Count</th>
+                                    <th>Recording</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of outgoingCallForUserResp.data,let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{data.call_date}}</td>
+                                    <td>{{data.length_in_sec}}</td>
+                                    <td>{{data.phone_number}}</td>
+                                    <td>{{data.phone_code}}</td>
+                                    <td>{{data.comments}}</td>
+                                    <td>{{data.processed}}</td>
+                                    <td>{{data.user_group}}</td>
+                                    <td>{{data.term_reason}}</td>
+                                    <td>{{data.alt_dial}}</td>
+                                    <td>{{data.called_count}}</td>
+                                    <td><button title="Download Recording"><i class="fa fa-download"
+                                                aria-hidden="true"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><br>
+
+
+                </div>
+            </div>
+
+            <div class="modal-footer" style="padding: 30px;">
+                <button type="button" style="margin-top: 35px;" class="btn btn-default" (click)="close()"
+                    data-dismiss="modal">Close</button>
+            </div>
+
+
+        </div>
+    </div>
+</div> -->
+
+<div class="footer" style="margin-top: 9px; margin-bottom: -30px;">
+    <div class="container">
+        <b class="copyright">&copy; 2022. Software developed and maintained by siddh services. </b>
+    </div>
+</div>

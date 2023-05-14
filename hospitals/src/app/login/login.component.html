@@ -1,0 +1,29 @@
+<div class="section">
+    <div class="card">
+        <div class="face front">
+            <div class="text-center">
+                <h4>HOSPITAL MANAGEMENT (v0.1)</h4>
+            </div>
+            <div class="form-div">
+                
+                    <div class="input-div">
+                        <input type="text"  name="loginid" [(ngModel)]="loginid" required id="username">
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="input-div">
+                        <input type="password" class="input password" name="password" [(ngModel)]="password"
+                        data-type="password" required id="password">
+                        <label for="password">Password</label>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="login">
+                        <div class="login-button">
+                            <button type="submit" class="button" (click)="loginAll()">Sign In</button>
+                        <div>
+                    </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
