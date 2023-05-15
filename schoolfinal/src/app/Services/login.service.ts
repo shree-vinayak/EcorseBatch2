@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { debug } from 'util';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class LoginService {
   authenticate(loginObj: any): any {
     console.log('Login Service Called', loginObj);
     debugger;
-    return this.http.post('http://localhost:8080/spring_configuration1/login?logintype='+loginObj.logintype, loginObj);
+    return this.http.post(environment.baseurl+'login?logintype='+loginObj.logintype, loginObj);
   }
 
   isUserLoggedIn(): boolean {

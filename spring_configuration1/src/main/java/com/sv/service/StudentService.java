@@ -53,6 +53,20 @@ public class StudentService {
 	}
 
 	@Transactional
+	public Object deleteStudentDetails(Integer rollNo, String username) {
+		ResponseWrapper wrapper = null;
+		Integer count = studentDao.deleteStudentDetails(rollNo, username);
+		if (count > 0) {
+			wrapper = new ResponseWrapper(null,
+					"Student Detail For RollNo : " + rollNo + " And Username : " + username + " Delete Successfully.",
+					true);
+		} else {
+			wrapper = new ResponseWrapper(null, "Can Not Delete Student Details", false);
+		}
+		return wrapper;
+	}
+
+	@Transactional
 	public Object getAllStudentInfoFromService() {
 		ResponseWrapper wrapper = null;
 
@@ -65,13 +79,10 @@ public class StudentService {
 		return wrapper;
 	}
 
-		
-		
-		
-		@Transactional
-		public Object getStudentInfoForPassedCriteria(SearchFormDTO searchFormDTO) {
-			ResponseWrapper wrapper = null;
-			List<Object> studentInfoListFromDb = studentDao.getAllStudentInfoForSearchCriteria(searchFormDTO);
+	@Transactional
+	public Object getStudentInfoForPassedCriteria(SearchFormDTO searchFormDTO) {
+		ResponseWrapper wrapper = null;
+		List<Object> studentInfoListFromDb = studentDao.getAllStudentInfoForSearchCriteria(searchFormDTO);
 		if (!studentInfoListFromDb.isEmpty()) {
 			wrapper = new ResponseWrapper(studentInfoListFromDb, "Fetch Student List Successfully", true);
 		} else {
@@ -80,17 +91,29 @@ public class StudentService {
 		return wrapper;
 	}
 
-		
-		@Transactional
-		public Object getStudentDetails(Integer rollNo, String username) {
-			ResponseWrapper wrapper = null;
-			StudentInfo studentInfoListFromDb = studentDao.getStudentDetails(rollNo,username);
-		if (studentInfoListFromDb!=null) {
+	@Transactional
+	public Object getStudentDetails(Integer rollNo, String username) {
+		ResponseWrapper wrapper = null;
+		StudentInfo studentInfoListFromDb = studentDao.getStudentDetails(rollNo, username);
+		if (studentInfoListFromDb != null) {
 			wrapper = new ResponseWrapper(studentInfoListFromDb, "Fetch Student Details Successfully", true);
 		} else {
 			wrapper = new ResponseWrapper(null, "No Data Found", false);
 		}
 		return wrapper;
+	}
+
+	@Transactional
+	public Object updateStudentInfo(StudentInfo studentInfo) {
+		ResponseWrapper wrapper = null;
+		Integer count = studentDao.updateStudentDetails(studentInfo);
+		if (count > 0) {
+			wrapper = new ResponseWrapper(null, "Student Detail For RollNo : " + studentInfo.getRollNo()
+					+ " And Username : " + studentInfo.getUsername() + " Updated Successfully.", true);
+		} else {
+			wrapper = new ResponseWrapper(null, "Can Not Update Student Details", false);
 		}
+		return wrapper;
+	}
 
 }

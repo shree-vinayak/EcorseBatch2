@@ -143,4 +143,60 @@ public class StudentDao {
 		}
 		return studentInfo;
 	}
+	
+	
+	public Integer deleteStudentDetails(Integer rollNo, String username) {
+		if (username != null && rollNo != null) {
+			Session session = factory.getCurrentSession();
+			Query query = session
+					.createQuery("delete from StudentInfo s where s.username=:username and s.rollNo=:rollNo");
+			query.setParameter("username", username);
+			query.setParameter("rollNo", rollNo);
+			int res = query.executeUpdate();
+			System.out.println("===delete student info from database for rollno  === " + rollNo);
+			return res;
+		}
+		return 0;
+	}
+	
+	public Integer updateStudentDetails(StudentInfo studentInfo) {
+		Session session = factory.getCurrentSession();
+		try {
+			StudentInfo studentInfoFromDb= getStudentDetailsForRollNo(studentInfo.getRollNo());
+			if(studentInfoFromDb!=null)
+			{
+			    studentInfoFromDb.setName(studentInfo.getName());
+				studentInfoFromDb.setFathername(studentInfo.getFathername());
+				studentInfoFromDb.setUsername(studentInfo.getUsername());
+				studentInfoFromDb.setStudentclass(studentInfo.getStudentclass());
+				studentInfoFromDb.setAge(studentInfo.getAge());
+				studentInfoFromDb.setAddress(studentInfo.getAddress());
+				studentInfoFromDb.setPhoneno(studentInfo.getPhoneno());
+				studentInfoFromDb.setDateofbirth(studentInfo.getDateofbirth());;
+				studentInfoFromDb.setDateofaddmission(studentInfo.getDateofaddmission());;
+				session.update(studentInfoFromDb);
+			}
+			return 1;
+		} catch (Exception e) {
+			return 0;
+		}
+		
+	}
+	
+	
+	public StudentInfo getStudentDetailsForRollNo(Integer rollNo) {
+		StudentInfo studentInfo = null;
+		if (rollNo != null) {
+			Session session = factory.getCurrentSession();
+			Query query = session.createQuery("from StudentInfo s where  s.rollNo=:rollNo");
+			query.setParameter("rollNo", rollNo);
+			List<Object> studentList = query.getResultList();
+			if (!studentList.isEmpty()) {
+				studentInfo = (StudentInfo) studentList.get(0);
+			}
+			System.out.println("===student info from database === " + studentInfo);
+			return studentInfo;
+		}
+		return studentInfo;
+	}
 }

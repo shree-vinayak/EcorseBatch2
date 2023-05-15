@@ -51,12 +51,12 @@
         </div>
     </div>
 </div>
-<div class="tabledata" style="border-collapse: collapse; text-align: center">
+<div class="tabledata" style=" text-align: center">
     <p *ngIf="studentList==null">
         Data is not available inside the database
 
     </p>
-    <table border="1" *ngIf="studentList">
+    <table border="1" *ngIf="studentList" style="border-collapse: collapse">
         <thead>
             <tr>
                 <th>Sr. No.</th>
@@ -79,13 +79,13 @@
                 <td>{{studentInfo.rollNo}}</td>
                 <td>{{studentInfo.name}}</td>
                 <td>{{studentInfo.fathername}}</td>
-                <td>{{studentInfo.c}}</td>
+                <td>{{studentInfo.username}}</td>
                 <td>{{studentInfo.studentclass}}</td>
                 <td>{{studentInfo.age}}</td>
                 <td>{{studentInfo.address}}</td>
                 <td>{{studentInfo.phoneno}}</td>
-                <td>{{studentInfo.dateofbirth}}</td>
-                <td>{{studentInfo.dateofaddmission}}</td>
+                <td>{{formatDate(studentInfo.dateofbirth)}}</td>
+                <td>{{formatDate(studentInfo.dateofaddmission)}}</td>
                 <td><button type="button" on-click="navigateToStudenDetails(studentInfo)">View</button></td>
             </tr>
         </tbody>

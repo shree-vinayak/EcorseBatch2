@@ -1,19 +1,41 @@
 1.  what is DispatcherServlet ?
-Ans:-   DispatcherServlet is  a frontcontroller. Any Request which is coming to our server first handle by dispatcher servlet then dispatcher servlet dispatcher that request to one of the controller who can actually handle that request.
+Ans:-   
+ DispatcherServlet is  a frontcontroller.
+ Any Request which is coming to our server first handle by dispatcher 
+ servlet then dispatcher servlet dispatcher that request to one of the 
+ controller who can actually handle that request.
 
 2.  what is an ApplicationContext And WebApplicationContext  ?
 Ans:-  BeanFactory, ApplicationContext, WebApplicationContext all are basically spring containers, 
  BeanFactory ======>ApplicationContext ======> WebApplicationContext
- basically BeanFactory and ApplicatioContext are core containers and WebApplicationContext is design to handle java web based application. 
+ basically BeanFactory and ApplicatioContext are core containers and 
+ WebApplicationContext is specially design  to handle java web based application. 
  
 
 4.  What is ViewResolver ?
-Ans:-  The DispatcherServlet will use this ViewResolver, Basically we  do  not hardcoded view name in our controller, we  just return the some string from controller, then the DispatcherServlet use the ViewResolver to find the exact view location and view extension. p
+Ans:- The DispatcherServlet will use this ViewResolver, Basically we  do  not hardcoded 
+view name in our controller, we just return the some string from controller,
+then the DispatcherServlet use the ViewResolver to find the exact view
+location and view extension. 
 
-5.  DispatcherServlet has its own WebApplicationContext, true or false And can we have multiple DispatcherServlet configured in one web application?
-This statement is true.
-
+5.  DispatcherServlet has its own WebApplicationContext, true or false And can we have multiple 
+DispatcherServlet configured in one web application?This statement is true.
 6.  Explain how spring mvc works in xml way. 
 7.  tell me the  10 spring core  annotation ?
 8.  Can We have multiple ServletContext Object for one web application?
 9. What is the use of ContextLoaderListner ?
+10.What is the difference between setValue and patchValue method in angular reactive form?
+11. What is Composite primary  ?
+12. How to create our own customized arrayList ?.
+13. what is multi threading and what is thread.?
+14. advantages of multithreading?
+15. what is java,what is object, what is class, what is oops?
+16. what is difference between spring and spring boot ?
+17. Hibernate  Object Life Cycle. 
+18  what is the difference between HQL and Criteria ?
+19. Explain different types of joins and how to implement inner join, left outer join, right outer join ?
+
+
+
+
+

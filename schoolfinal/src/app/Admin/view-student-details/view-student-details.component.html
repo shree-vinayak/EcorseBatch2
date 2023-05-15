@@ -1,1 +1,147 @@
-<p>view-student-details works!</p>
+<div class="container" align="center" *ngIf="studentDetailsForm">
+    <form [formGroup]="studentDetailsForm">
+
+        <div>
+            <label for="rollNo">Roll No</label>
+            <input type="text" id="rollNo" name="rollNo" placeholder="Your RollNo" formControlName="rollNo">
+        </div>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" formControlName="name">
+
+            <div *ngIf="getControls.name.invalid && (getControls.name.dirty || getControls.name.touched || submitted)">
+                <span *ngIf="getControls.name.errors?.required" style="color: red">Name is required</span>
+                <span *ngIf="getControls.name.errors?.minlength" style="color: red">Name should be atleast 3
+                                        characters</span><br>
+                <span *ngIf="getControls.name.errors?.pattern" style="color: red">Only alphabets are allowed</span>
+            </div>
+        </div>
+
+
+
+
+        <div>
+            <label for="fathername">Father Name</label>
+            <input type="text" id="fathername" fathername="fathername" placeholder="Your Father Name" formControlName="fathername">
+
+            <div *ngIf="getControls.fathername.invalid && (getControls.fathername.dirty || getControls.fathername.touched || submitted)">
+                <span *ngIf="getControls.fathername.errors?.required" style="color: red">Father Name is required</span>
+                <span *ngIf="getControls.fathername.errors?.minlength" style="color: red">Father Name should be atleast 3
+                    characters</span>
+                <br>
+                <span *ngIf="getControls.fathername.errors?.pattern" style="color: red">Only alphabets are
+                    allowed</span>
+            </div>
+        </div>
+
+        <div>
+            <label for="username"> Username </label>
+            <input type="email" id="username" name="username" placeholder="Enter Username" formControlName="username" />
+
+            <div *ngIf="getControls.username.invalid && (getControls.username.dirty || getControls.username.touched || submitted)">
+                <span *ngIf="getControls.username.errors?.required" style="color: red">username is required</span>
+                <span *ngIf="getControls.username.errors?.email" style="color: red">username is incorrect</span>
+            </div>
+        </div>
+
+
+        <div>
+            <label for="studentclass"> Student Class </label>
+            <select id="studentclass" name="studentclass" formControlName="studentclass">
+                <option value="">--Select Student Class--</option>
+                <option value="1">1 st</option>
+                <option value="2">2 nd</option>
+                <option value="3">3 rd</option>
+                <option value="4">4 th</option>
+                <option value="5">5 th</option>
+                <option value="6">6 th</option>
+                <option value="7">7 th</option>
+                <option value="8">8 th</option>
+                <option value="9">9 th</option>
+                <option value="10">10 th</option>
+                <option value="11">11 th</option>
+                <option value="12">12 th</option>
+            </select>
+
+            <div *ngIf="getControls.studentclass.invalid && (getControls.studentclass.dirty || getControls.studentclass.touched || submitted)">
+                <span *ngIf="getControls.studentclass.errors?.required" style="color: red">Student Class is
+                    required</span>
+            </div>
+        </div>
+
+        <div>
+            <label for="age"> Age </label>
+            <select id="age" name="age" formControlName="age">
+                <option value="">--Select Age--</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+            </select>
+
+            <div *ngIf="getControls.age.invalid && (getControls.age.dirty || getControls.age.touched || submitted)">
+                <span *ngIf="getControls.age.errors?.required" style="color: red">Age is required</span>
+            </div>
+        </div>
+
+        <div>
+            <label for="address"> Address </label>
+            <input type="text" id="address" name="address" placeholder="Your Address" formControlName="address" />
+
+            <div *ngIf="getControls.address.invalid && (getControls.address.dirty || getControls.address.touched || submitted)">
+                <span *ngIf="getControls.address.errors?.required" style="color: red">Address is required</span>
+            </div>
+        </div>
+
+        <div>
+            <label for="phoneno">Phone No.</label>
+            <input type="number" id="phoneno" name="phoneno" placeholder="Enter your Phone number" formControlName="phoneno">
+
+            <div *ngIf="getControls.phoneno.invalid && (getControls.phoneno.dirty || getControls.phoneno.touched || submitted)">
+                <span *ngIf="getControls.phoneno.errors?.required" style="color: red">Phone number is required</span>
+                <!-- <span *ngIf="getControls.phoneno.errors?.phone" style="color: red">Phone number should be of 10 numbers</span> -->
+            </div>
+        </div>
+
+        <div>
+            <label for="dateofbirth">Date of Birth</label>
+            <input type="date" id="dateofbirth" name="dateofbirth" placeholder="Enter your Date of Birth" formControlName="dateofbirth">
+
+            <div *ngIf="getControls.dateofbirth.invalid && (getControls.dateofbirth.dirty || getControls.dateofbirth.touched || submitted)">
+                <span *ngIf="getControls.dateofbirth.errors?.required" style="color: red">Date of Birth is
+                    required</span>
+            </div>
+        </div>
+
+        <div>
+            <label for="dateofaddmission">Date of Admission</label>
+            <input type="date" id="dateofaddmission" name="dateofaddmission" placeholder="Enter your Date of Birth" formControlName="dateofaddmission">
+
+            <div *ngIf="getControls.dateofaddmission.invalid && (getControls.dateofaddmission.dirty || getControls.dateofaddmission.touched || submitted)">
+                <span *ngIf="getControls.dateofaddmission.errors?.required" style="color: red">Date of Birth is
+                    required</span>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <input type="submit" class="update" on-click="updateStudent()" value="Update"> &nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit" class="delete" on-click="deleteStudent()" value="Delete">
+    </form>
+</div>

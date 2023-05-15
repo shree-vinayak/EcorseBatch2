@@ -29,8 +29,18 @@ export class AdminService {
 
   public getStudentDetails(rollno:number,username:string)
   {
-
     return this.http.get(environment.baseurl+"getStudentDetails?rollno="+rollno+"&&username="+username);
+  }
+
+  public deleteStudentDetails(rollno:number,username:string)
+  {
+    return this.http.delete(environment.baseurl+"deleteStudentDetails?rollno="+rollno+"&&username="+username);
+  }
+
+  public updateStudentDetails(studentInfo:any)
+  {
+    debugger; 
+    return this.http.put(environment.baseurl+"updateStudentInfo",studentInfo);
   }
   
 }
