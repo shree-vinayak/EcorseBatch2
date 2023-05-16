@@ -66,7 +66,18 @@ public class StudentInfoController {
 		public Object updateStudentInfo(@RequestBody StudentInfo studentInfo) {
 			return studentService.updateStudentInfo(studentInfo);
 		}
+		
+		
 	
+		@GetMapping(value = "/getClassesList",  produces = MediaType.APPLICATION_JSON_VALUE)
+		public Object getStudentDetails( ){
+			return studentService.getClassesList();
+		}
+		
+		@GetMapping(value = "/getStudentDetailsForClass",  produces = MediaType.APPLICATION_JSON_VALUE)
+		public Object getStudentDetailsForClass(@RequestParam("studentclass")Integer   studentclass){
+			return studentService.getStudentDetailsForClass(studentclass);
+		}
 	
 
 }

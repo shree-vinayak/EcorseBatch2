@@ -1,0 +1,70 @@
+<div class="formdata">
+    <h2 align="center">Enter Result</h2>
+
+    <div class="container" align="center">
+        <form [formGroup]="resultForm">
+            <div>
+                <label for="studentclass"> Student Class </label>
+                <select id="studentclass" name="studentclass" (change)="getStudentDetails($event)" formControlName="studentclass">
+                    <option value="">--Select Student Class--</option>
+                    <option value={{class}} *ngFor="let class of classList">{{class}}</option>
+                    
+                </select>
+            </div>
+            <div *ngIf="studentData">
+                <label for="username"> Student Username </label>
+                <select id="username" name="username" formControlName="username">
+                    <option value="">--Select Student Username--</option>
+                    <option value={{student.username}} *ngFor="let student of studentData">{{student.username}}</option>
+                    
+                </select>
+            </div>
+
+            <br>
+            <br>
+            <input type="submit" on-click="submitForm()" value="Submit">
+        </form>
+
+    </div>
+</div>
+<div class="tabledata" style=" text-align: center">
+    <p *ngIf="studentResultData==null">
+        Data is not available inside the database
+
+    </p>
+    <table border="1" *ngIf="studentResultData" style="border-collapse: collapse">
+        <thead>
+            <tr>
+                <th>Sr. No.</th>
+                <th>rollNo</th>
+                <th>name</th>
+                <th>fathername</th>
+                <th>username</th>
+                <th>studentclass</th>
+                <th>age</th>
+                <th>address</th>
+                <th>phoneno</th>
+                <th>dateofbirth</th>
+                <th>dateofaddmission</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let studentInfo of studentResultData; index as i">
+                <td>{{i+1}}</td>
+                <td>{{studentInfo.rollNo}}</td>
+                <td>{{studentInfo.name}}</td>
+                <td>{{studentInfo.fathername}}</td>
+                <td>{{studentInfo.username}}</td>
+                <td>{{studentInfo.studentclass}}</td>
+                <td>{{studentInfo.age}}</td>
+                <td>{{studentInfo.address}}</td>
+                <td>{{studentInfo.phoneno}}</td>
+                <td>{{formatDate(studentInfo.dateofbirth)}}</td>
+                <td>{{formatDate(studentInfo.dateofaddmission)}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+
+</div>

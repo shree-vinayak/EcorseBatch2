@@ -199,4 +199,20 @@ public class StudentDao {
 		}
 		return studentInfo;
 	}
+
+	public List<Object> getAllStudentInfoForStudentClass(Integer studentclass) {
+		Session session = factory.getCurrentSession();
+		try {
+
+			Query query = session.createQuery("from StudentInfo s where s.studentclass=:studentclass order by s.username");
+			query.setParameter("studentclass", studentclass);
+			List<Object> studentListFromdb = query.getResultList();
+			System.out.println("====Total Number of Student Load from data base " + studentListFromdb.size());
+			return studentListFromdb;
+
+		} catch (Exception e) {
+			System.out.println("Some Exception Occured While Fetching Student List From Database:" + e.getMessage());
+			return null;
+		}
+	}
 }

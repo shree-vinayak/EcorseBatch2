@@ -14,6 +14,7 @@ import { StudentHeaderComponent } from './Student/student-header/student-header.
 import { AdminService } from './Services/admin.service';
 import { ViewStudentListComponent } from './Admin/view-student-list/view-student-list.component';
 import { ViewStudentDetailsComponent } from './Admin/view-student-details/view-student-details.component';
+import { StudentResultComponent } from './Admin/student-result/student-result.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ViewStudentDetailsComponent } from './Admin/view-student-details/view-s
     AdminHeaderComponent,
     StudentHeaderComponent,
     ViewStudentListComponent,
-    ViewStudentDetailsComponent
+    ViewStudentDetailsComponent,
+    StudentResultComponent
   ],
   imports: [
     BrowserModule,

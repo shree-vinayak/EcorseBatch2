@@ -5,6 +5,7 @@ import { AdminHomeComponent } from './Admin/admin-home/admin-home.component';
 import { StudentHomeComponent } from './Student/student-home/student-home.component';
 import { ViewStudentListComponent } from './Admin/view-student-list/view-student-list.component';
 import { ViewStudentDetailsComponent } from './Admin/view-student-details/view-student-details.component';
+import { StudentResultComponent } from './Admin/student-result/student-result.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'admin-home', component: AdminHomeComponent },
   {path:'view-student-list',component:ViewStudentListComponent},
   {path:'view-studentdetails/:rollno/:username',component:ViewStudentDetailsComponent},
+  {path:'studentResult',component:StudentResultComponent},
 
   // PATH FOR STUDENT START
   { path: 'student-home', component: StudentHomeComponent }

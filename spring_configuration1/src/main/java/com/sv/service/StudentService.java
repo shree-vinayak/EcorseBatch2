@@ -2,6 +2,7 @@ package com.sv.service;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -112,6 +113,36 @@ public class StudentService {
 					+ " And Username : " + studentInfo.getUsername() + " Updated Successfully.", true);
 		} else {
 			wrapper = new ResponseWrapper(null, "Can Not Update Student Details", false);
+		}
+		return wrapper;
+	}
+
+	public Object getClassesList() {
+		List<Integer> classlist= new ArrayList<>();
+		classlist.add(1);
+		classlist.add(2);
+		classlist.add(3);
+		classlist.add(4);
+		classlist.add(5);
+		classlist.add(6);
+		classlist.add(7);
+		classlist.add(8);
+		classlist.add(9);
+		classlist.add(10);
+		classlist.add(11);
+		classlist.add(12);
+		return classlist;
+		
+	}
+
+	@Transactional
+	public Object getStudentDetailsForClass(Integer studentclass) {
+		ResponseWrapper wrapper = null;
+		List<Object> studentInfoListFromDb = studentDao.getAllStudentInfoForStudentClass(studentclass);
+		if (!studentInfoListFromDb.isEmpty()) {
+			wrapper = new ResponseWrapper(studentInfoListFromDb, "Fetch Student List Successfully", true);
+		} else {
+			wrapper = new ResponseWrapper(null, "No Data Found", false);
 		}
 		return wrapper;
 	}

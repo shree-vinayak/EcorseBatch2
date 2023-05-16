@@ -1,0 +1,34 @@
+.formdata {
+    width: 30%;
+    border: 1px solid black;
+    min-height: 500px;
+    float: left;
+}
+
+.tabledata {
+    width: 65%;
+    border: 1px solid black;
+    min-height: 500px;
+    float: right;
+    overflow: scroll
+}
+
+.columns {
+    width: 36%;
+    min-height: 155px;
+    border: 1px solid blue;
+    float: left;
+    margin-left: 3px;
+}
+
+.selectedcolumns {
+    width: 36%;
+    min-height: 155px;
+    border: 1px solid blue;
+    float: right;
+    margin-right: 3px;
+}
+
+li {
+    list-style: none;
+}
