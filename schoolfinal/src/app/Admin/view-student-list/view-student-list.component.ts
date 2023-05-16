@@ -35,7 +35,7 @@ export class ViewStudentListComponent implements OnInit {
  
     
 
-    this.adminService.getAllStudentInfo().subscribe((response:any)=>
+    this.adminService.getApi('getAllStudentInfo').subscribe((response:any)=>
     {
         if(response.status)
         {

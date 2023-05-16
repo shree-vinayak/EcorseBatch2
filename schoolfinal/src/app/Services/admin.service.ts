@@ -16,9 +16,10 @@ export class AdminService {
   }
 
 
-  public getAllStudentInfo()
+  public getApi(url:string)
   {
-    return this.http.get(environment.baseurl+'getAllStudentInfo')
+    debugger;
+    return this.http.get(environment.baseurl+url)
   }
 
   public getAllStuInfoOnSearchCriatria(searchFormValue:any)
@@ -39,8 +40,11 @@ export class AdminService {
 
   public updateStudentDetails(studentInfo:any)
   {
-    debugger; 
     return this.http.put(environment.baseurl+"updateStudentInfo",studentInfo);
   }
-  
+
+  public  getClassesList()
+  {
+    return  this.http.get<Number[]>(environment.baseurl+'getClassesList');
+  }  
 }
