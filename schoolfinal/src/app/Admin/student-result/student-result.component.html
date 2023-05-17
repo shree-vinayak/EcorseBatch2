@@ -13,55 +13,72 @@
             </div>
             <div *ngIf="studentData">
                 <label for="username"> Student Username </label>
-                <select id="username" name="username" formControlName="username">
+                <select id="username" (change)="getStudentResultList()" name="username" formControlName="username">
                     <option value="">--Select Student Username--</option>
                     <option value={{student.username}} *ngFor="let student of studentData">{{student.username}}</option>
                     
                 </select>
             </div>
 
+            <div *ngIf="studentData">
+                <label for="examtype"> Student Examtype </label>
+                <select id="examtype" name="examtype" formControlName="examtype">
+                        <option value="">--Select Examtype--</option>
+                        <option value="Quaterly" >Quaterly</option>
+                        <option value="HalfYearly" >HalfYearly</option>
+                        <option value="Final" >Final</option>
+                    </select>
+            </div>
+            <div *ngIf="studentData">
+                <label for="physicsmarks"> physicsmarks </label>
+                <input type="number" id="physicsmarks" name="physicsmarks" placeholder="Enter physicsmarks" formControlName="physicsmarks" />
+
+            </div>
+            <div *ngIf="studentData">
+                <label for="chemistrymarks"> chemistrymarks </label>
+                <input type="number" id="chemistrymarks" name="chemistrymarks" placeholder="Enter chemistrymarks" formControlName="chemistrymarks" />
+
+            </div>
+            <div *ngIf="studentData">
+                <label for="mathsmarks"> mathsmarks </label>
+                <input type="number" id="mathsmarks" name="mathsmarks" placeholder="Enter mathsmarks" formControlName="mathsmarks" />
+
+            </div>
+
             <br>
             <br>
-            <input type="submit" on-click="submitForm()" value="Submit">
+            <input type="submit" on-click="saveResult()" value="Submit">
         </form>
 
     </div>
 </div>
 <div class="tabledata" style=" text-align: center">
-    <p *ngIf="studentResultData==null">
+    <p *ngIf="studentResultList==null">
         Data is not available inside the database
 
     </p>
-    <table border="1" *ngIf="studentResultData" style="border-collapse: collapse">
+    <table border="1" *ngIf="studentResultList" style="border-collapse: collapse">
         <thead>
             <tr>
                 <th>Sr. No.</th>
                 <th>rollNo</th>
-                <th>name</th>
-                <th>fathername</th>
                 <th>username</th>
-                <th>studentclass</th>
-                <th>age</th>
-                <th>address</th>
-                <th>phoneno</th>
-                <th>dateofbirth</th>
-                <th>dateofaddmission</th>
+                <th>Exam type</th>
+                <th>physics marks</th>
+                <th>chemistry marks</th>
+                <th>maths marks</th>
 
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let studentInfo of studentResultData; index as i">
+            <tr *ngFor="let studentResltObj of studentResultList; index as i">
                 <td>{{i+1}}</td>
-                <td>{{studentInfo.rollNo}}</td>
-                <td>{{studentInfo.name}}</td>
-                <td>{{studentInfo.fathername}}</td>
-                <td>{{studentInfo.username}}</td>
-                <td>{{studentInfo.studentclass}}</td>
-                <td>{{studentInfo.age}}</td>
-                <td>{{studentInfo.address}}</td>
-                <td>{{studentInfo.phoneno}}</td>
-                <td>{{formatDate(studentInfo.dateofbirth)}}</td>
-                <td>{{formatDate(studentInfo.dateofaddmission)}}</td>
+                <td>{{studentResltObj.rollno}}</td>
+                <td>{{studentResltObj.username}}</td>
+                <td>{{studentResltObj.examtype}}</td>
+                <td>{{studentResltObj.physicsmarks}}</td>
+                <td>{{studentResltObj.chemistrymarks}}</td>
+                <td>{{studentResltObj.mathsmarks}}</td>
 
             </tr>
         </tbody>

@@ -78,6 +78,8 @@ public class StudentInfoController {
 		public Object getStudentDetailsForClass(@RequestParam("studentclass")Integer   studentclass){
 			return studentService.getStudentDetailsForClass(studentclass);
 		}
+		
+		
 	
 
 }

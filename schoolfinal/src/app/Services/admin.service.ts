@@ -46,5 +46,17 @@ export class AdminService {
   public  getClassesList()
   {
     return  this.http.get<Number[]>(environment.baseurl+'getClassesList');
-  }  
+  }
+  
+  
+  public getResultForStudent(username:any)
+  {
+    return  this.http.get(environment.baseurl+'getStudentResult?username='+username);
+  }
+
+
+  public saveResultForStudent(marksObj:any)
+  {
+    return  this.http.post(environment.baseurl+'saveStudentResult',marksObj);
+  }
 }

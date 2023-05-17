@@ -12,6 +12,7 @@ export class StudentResultComponent implements OnInit {
   resultForm: FormGroup = null;
   studentData: any = null;
   classList: any = null;
+  studentResultList: any = null;
 
 
   constructor(private adminservice: AdminService) { }
@@ -26,7 +27,11 @@ export class StudentResultComponent implements OnInit {
 
     this.resultForm = new FormGroup({
       studentclass: new FormControl('', [Validators.required]),
-      username:new FormControl('',[Validators.required])
+      username: new FormControl('', [Validators.required]),
+      examtype:new FormControl('',[Validators.required]),
+      physicsmarks:new FormControl('',[Validators.required]),
+      chemistrymarks:new FormControl('',[Validators.required]),
+      mathsmarks:new FormControl('',[Validators.required])
     });
   }
 
@@ -42,6 +47,34 @@ export class StudentResultComponent implements OnInit {
     }, (error: any) => {
       console.log(error)
     })
+  }
+
+  getStudentResultList() {
+    this.adminservice.getResultForStudent(this.resultForm.controls.username.value).subscribe(
+      (respose: any) => {
+        if (respose.status) {
+          this.studentResultList = respose.data;
+        }
+        else {
+          alert(respose.message);
+          this.studentResultList = null;
+        }
+      }
+    )
+  }
+
+  saveResult()
+  {
+    if(this.resultForm.invalid)
+    {
+      alert("form is invalid");
+      return 
+    }
+     this.adminservice.saveResultForStudent(this.resultForm.value).subscribe((response:any)=>
+     {
+         alert(response.message);
+         this.getStudentResultList();
+     })
   }
 
 }
