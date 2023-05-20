@@ -10,29 +10,29 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.sv.dao.LoginDao;
-import com.sv.dao.UserDataDao;
 import com.sv.entity.LoginEntity;
-import com.sv.entity.UserData;
 
 @Service
-public class UserDataService  {
-
+public class UserService implements UserDetailsService {
 	
-	@Autowired
-	private UserDataDao userDataDao; 
-	
-	
-
 	@Autowired
 	private LoginDao logindao;
-	
 
-	@Transactional
-	public List<UserData> getUserData() {
-		return userDataDao.getUserData();
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		LoginEntity loginEntityFromDb = logindao.getLoginEntityById(username);
+		if(loginEntityFromDb == null){
+			throw new UsernameNotFoundException("Invalid username or password.");
+		}
+		return new User(loginEntityFromDb.getUsername(), 
+				loginEntityFromDb.getPassword(), getAuthority(loginEntityFromDb.getRole()));
 	}
 	
+	
+	private List<SimpleGrantedAuthority> getAuthority(String role) {
+		return Arrays.asList(new SimpleGrantedAuthority(role));
+	}
+
 }

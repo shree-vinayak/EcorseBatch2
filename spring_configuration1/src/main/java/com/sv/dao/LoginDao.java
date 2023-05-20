@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sv.entity.LoginEntity;
 
@@ -13,6 +14,7 @@ public class LoginDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	@Transactional
 	public LoginEntity getLoginEntityById(String username) {
 		Session session = sessionFactory.getCurrentSession();
 		LoginEntity loginEntity = (LoginEntity) session.get(LoginEntity.class, username);
