@@ -33,8 +33,6 @@ export class ViewStudentListComponent implements OnInit {
       selectedColumnsValue:new FormControl()
     })
  
-    
-
     this.adminService.getApi('getAllStudentInfo').subscribe((response:any)=>
     {
         if(response.status)

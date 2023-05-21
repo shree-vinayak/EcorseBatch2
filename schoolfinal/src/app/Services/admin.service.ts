@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -18,13 +18,14 @@ export class AdminService {
 
   public getApi(url:string)
   {
-    debugger;
-    return this.http.get(environment.baseurl+url)
+    const headers= new HttpHeaders().set('Authorization', sessionStorage.getItem('token'));
+    return this.http.get(environment.baseurl+url,{headers:headers})
   }
 
   public getAllStuInfoOnSearchCriatria(searchFormValue:any)
   {
-    return this.http.post(environment.baseurl+'getStuInfoForSearchCriteria',searchFormValue)
+    const headers= new HttpHeaders().set('Authorization', sessionStorage.getItem('token'));
+    return this.http.post(environment.baseurl+'getStuInfoForSearchCriteria',searchFormValue,{headers:headers})
   }
 
 

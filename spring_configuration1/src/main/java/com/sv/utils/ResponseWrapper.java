@@ -5,6 +5,8 @@ public class ResponseWrapper {
 	private Object data;
 	private String message;
 	private boolean status;
+	private String token;
+	
 	
 	public ResponseWrapper() {
 		super();
@@ -15,6 +17,16 @@ public class ResponseWrapper {
 		this.data = data;
 		this.message = message;
 		this.status = status;
+	}
+	
+	
+
+	public ResponseWrapper(Object data, String message, boolean status, String token) {
+		super();
+		this.data = data;
+		this.message = message;
+		this.status = status;
+		this.token = token;
 	}
 
 	public Object getData() {
@@ -40,5 +52,17 @@ public class ResponseWrapper {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+	
+	
+	
+	
 
 }
