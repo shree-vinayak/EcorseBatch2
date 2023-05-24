@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sv.dao.LoginDao;
 import com.sv.dao.StudentDao;
+import com.sv.entity.LoginEntity;
 import com.sv.entity.StudentInfo;
 import com.sv.utils.ResponseWrapper;
 import com.sv.utils.SearchFormDTO;
@@ -20,23 +23,36 @@ public class StudentService {
 	@Autowired
 	private StudentDao studentDao;
 
+	@Autowired
+	private LoginDao logindao;
+
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+
 	@Transactional
 	public ResponseWrapper saveStudentInfo(StudentInfo studentInfo) {
 		ResponseWrapper wrapper = new ResponseWrapper();
 		if (!isUsernameExits(studentInfo.getUsername())) {
-			// implement all the validation and rules for admission in your school. //
-			System.out.println("=====StudentInfo before saving to database=====" + studentInfo);
-			studentInfo.setDateofaddmission(LocalDate.now());
-			studentInfo.setRole("STUDENT");
-			Serializable serializable = studentDao.addStudentInfo(studentInfo);
-			wrapper.setData(serializable);
-			wrapper.setMessage("StudentInfo Saved Successfully.");
-			wrapper.setStatus(true);
-		} else {
-			wrapper.setData(null);
-			wrapper.setMessage(
-					"Can not create studentInfo, because student with this username is already available inside the database.");
-			wrapper.setStatus(false);
+
+			LoginEntity entity = new LoginEntity(studentInfo.getUsername(), encoder.encode(studentInfo.getPassword()),
+					"STUDENT");
+
+			Serializable value = logindao.save(entity);
+			if (value != null) {
+				// implement all the validation and rules for admission in your school. //
+				System.out.println("=====StudentInfo before saving to database=====" + studentInfo);
+				studentInfo.setDateofaddmission(LocalDate.now());
+				studentInfo.setRole("STUDENT");
+				Serializable serializable = studentDao.addStudentInfo(studentInfo);
+				wrapper.setData(serializable);
+				wrapper.setMessage("StudentInfo Saved Successfully.");
+				wrapper.setStatus(true);
+			} else {
+				wrapper.setData(null);
+				wrapper.setMessage(
+						"Can not create studentInfo, because student with this username is already available inside the database.");
+				wrapper.setStatus(false);
+			}
 		}
 
 		return wrapper;
@@ -118,7 +134,7 @@ public class StudentService {
 	}
 
 	public Object getClassesList() {
-		List<Integer> classlist= new ArrayList<>();
+		List<Integer> classlist = new ArrayList<>();
 		classlist.add(1);
 		classlist.add(2);
 		classlist.add(3);
@@ -132,7 +148,7 @@ public class StudentService {
 		classlist.add(11);
 		classlist.add(12);
 		return classlist;
-		
+
 	}
 
 	@Transactional
@@ -146,7 +162,5 @@ public class StudentService {
 		}
 		return wrapper;
 	}
-
-	
 
 }
