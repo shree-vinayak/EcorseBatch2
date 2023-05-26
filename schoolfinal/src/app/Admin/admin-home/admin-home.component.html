@@ -44,7 +44,19 @@
 
             <div *ngIf="getControls.password.invalid && (getControls.password.dirty || getControls.password.touched || submitted)">
                 <span *ngIf="getControls.password.errors?.required" style="color: red">password is required</span>
-                <!-- <span *ngIf="getControls.password.errors?.password" style="color: red">password is incorrect</span> -->
+            </div>
+        </div>
+
+        <div>
+            <label for="confirmpassword"> Confirm Password </label>
+            <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Enter confirmpassword" formControlName="confirmpassword" />
+
+            <div *ngIf="adminValidation.errors">
+                <span *ngIf="adminValidation.errors?.passworderror" style="color: red">Password does not match</span>
+            </div>
+
+            <div *ngIf="getControls.confirmpassword.invalid && (getControls.confirmpassword.dirty || getControls.confirmpassword.touched || submitted)">
+                <span *ngIf="getControls.confirmpassword.errors?.required" style="color: red">password is required</span>
             </div>
         </div>
 
