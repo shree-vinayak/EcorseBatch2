@@ -1,0 +1,100 @@
+<app-admin-header></app-admin-header>
+<div class="wrapper" appNoRightClick>
+    <div class="container-fluid">
+        <div class="outerContent">
+
+            <app-admin-sidebar></app-admin-sidebar>
+
+            <div class="col-md-9">
+                <div class="content">
+                    <div
+                        style="text-align: center;color: black;text-transform: uppercase;font-weight: bolder;letter-spacing: 0.4px;margin-bottom:18px">
+                        <h4>Doctor Wise Summary Revisit Patient Report For Date Range</h4>
+                    </div>
+                    <form [formGroup]="dateRangeForm">
+                        <div class="ctrlgrp">
+                            <div class="label-div">
+                                <label class="control-label" for="basicinput">Select Start Date</label>
+                            </div>
+                            <div class="controls-input">
+                                <input type="text" class="span6" id="startDate" formControlName='startDate' bsDatepicker
+                                    placeholder="Choose Date For Incoming Calls Count" (ngModelChange)="resetEndDate()"
+                                    [bsConfig]="{ isAnimated: true ,adaptivePosition: true, dateInputFormat: 'DD-MMM-YYYY'}"
+                                    [ngClass]="{ 'is-invalid': submitted && f1.startDate.errors }"
+                                    [maxDate]="todayDate" />
+                                <div *ngIf="submitted && f1.startDate.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.startDate.errors.required">
+                                        Date is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ctrlgrp">
+                            <div class="label-div">
+                                <label class="control-label" for="basicinput">Select End Date</label>
+                            </div>
+                            <div class="controls-input">
+                                <input type="text" class="span6" id="endDate" formControlName='endDate' bsDatepicker
+                                    placeholder="Choose Date For Incoming Calls Count"
+                                    (ngModelChange)="getDoctorWiseSummaryReport()"
+                                    [bsConfig]="{ isAnimated: true ,adaptivePosition: true, dateInputFormat: 'DD-MMM-YYYY'}"
+                                    [ngClass]="{ 'is-invalid': submitted && f1.endDate.errors }"
+                                    [minDate]="f1.startDate.value" />
+                                <div *ngIf="submitted && f1.endDate.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.endDate.errors.required">
+                                        Date is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div *ngIf="doctorSummaryResp===null" class="noRecordFound">
+                    <span>No Record Found Between This Date Range</span>
+                </div>
+
+                <!-- incoming outgoing calls report -->
+
+                <div *ngIf="doctorSummaryResp" class="reports-div">
+                    <div class="text-center reports-header">
+                        <h4>Doctor Wise Summary Report</h4>
+                        <button (click)="exportAsXsls(doctorSummaryResp,'Doctor Wise Summary Report')" class="exportBtn"
+                            title="Download reprot in excel">Export</button>
+                    </div>
+
+                    <div class="table-overflow" id="table-overflow">
+                        <table class="table table-responsive table-bordered custab">
+                            <thead>
+                                <tr>
+                                    <th>Sr.No.</th>
+                                    <th>Doctors Name</th>
+                                    <th>Patient Count</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of doctorSummaryResp,let i = index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{data.doctorname}}</td>
+                                    <td (click)="getAllPatientForDoctor(data.doctorname)">{{data.count}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+            <!--/.span9-->
+        </div>
+    </div>
+    <!--/.container-->
+</div>
+<!--/.wrapper-->
+
+<div class="footer" style="margin-top: 9px; margin-bottom: -30px;">
+    <div class="container">
+        <b class="copyright">&copy; 2022. Software developed and maintained by siddh services. </b>
+    </div>
+</div>

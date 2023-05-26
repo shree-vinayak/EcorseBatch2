@@ -1,0 +1,391 @@
+<app-admin-header></app-admin-header>
+<div class="wrapper" appNoRightClick>
+    <div class="loader" *ngIf='loader'></div>
+    <div class="container-fluid">
+        <div class="outerContent">
+
+            <app-admin-sidebar></app-admin-sidebar>
+
+            <div class="col-md-9">
+
+                <div class="content">
+                    <div>
+                        <button class="btn btn-success btn-sm" [routerLink]="['/admin-home']">
+                            New Opd
+                        </button>
+
+                        <button class="btn btn-danger btn-sm pull-right" [routerLink]="['/old-opd']">
+                            Print Revisit
+                        </button>
+                    </div>
+                    <div style="text-align: center;color: black;text-transform: uppercase;font-weight: bolder;letter-spacing: 0.4px;margin-bottom:18px;">
+                        <h4><b>Register Patient Details
+                                <hr> </b></h4>
+                    </div>
+                    <!-- <form [formGroup]="registerPatient">
+
+                        <div class="well">
+                            <div class="row">
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label" for="basicinput">Enter Name</label>
+                                        <input type="text" class="span6" id="name" formControlName='name'
+                                            placeholder="Enter Name"
+                                            [ngClass]="{ 'is-invalid': submitted && f1.name.errors }" />
+                                        <div *ngIf="submitted && f1.name.errors" class="invalid-feedback">
+                                            <div *ngIf="f1.name.errors.required">
+                                                name is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label" for="basicinput">Enter Email</label>
+                                        <input type="text" class="span6" id="email" formControlName='email'
+                                            placeholder="Enter email"
+                                            [ngClass]="{ 'is-invalid': submitted && f1.email.errors }" />
+                                        <div *ngIf="submitted && f1.email.errors" class="invalid-feedback">
+                                            <div *ngIf="f1.email.errors.required">
+                                                email is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label" for="basicinput">Mobile No</label>
+                                        <input type="text" class="span6" id="mobileno" formControlName='mobileno'
+                                            placeholder="Enter mobileno"
+                                            [ngClass]="{ 'is-invalid': submitted && f1.mobileno.errors }" />
+                                        <div *ngIf="submitted && f1.mobileno.errors" class="invalid-feedback">
+                                            <div *ngIf="f1.mobileno.errors.required">
+                                                mobileno is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="well">
+                            <div class="row">
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label" for="basicinput">Patient Diseases</label>
+                                        <input type="text" class="span6" id="patientdiseases"
+                                            formControlName='patientdiseases' placeholder="Enter patient diseases"
+                                            [ngClass]="{ 'is-invalid': submitted && f1.patientdiseases.errors }" />
+                                        <div *ngIf="submitted && f1.patientdiseases.errors" class="invalid-feedback">
+                                            <div *ngIf="f1.patientdiseases.errors.required">
+                                                patient diseases is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label" for="basicinput">Date</label>
+                                        <input type="text" class="span6" id="date" formControlName='date' bsDatepicker
+                                            placeholder="Date"
+                                            [bsConfig]="{ isAnimated: true ,adaptivePosition: true, dateInputFormat: 'DD-MMM-YYYY'}"
+                                            [ngClass]="{ 'is-invalid': submitted && f1.date.errors }" />
+                                        <div *ngIf="submitted && f1.date.errors" class="invalid-feedback">
+                                            <div *ngIf="f1.date.errors.required">
+                                                Date is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+
+                    </form> -->
+                    <form [formGroup]="registerPatient">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="pname">Name</label>
+                                <input type="text" class="form-control" id="pname" placeholder="Patient Name" [ngClass]="{ 'is-invalid': submitted && f1.name.errors }" formControlName='name' autocomplete="off">
+                                <div *ngIf="submitted && f1.name.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.name.errors.required">
+                                        Name Is Required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="fname">Father/Husband Name</label>
+                                <input type="text" class="form-control" id="fname" placeholder="Father/Husband Name" [ngClass]="{ 'is-invalid': submitted && f1.fname.errors }" formControlName='fname' autocomplete="off">
+                                <div *ngIf="submitted && f1.fname.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.fname.errors.required">
+                                        Father Or Husband Name Is Required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="mobileno">Mobile No.</label>
+                                <input type="text" class="form-control" id="mobileno" autocomplete="off" placeholder="Mobile No" formControlName='mobileno' autocomplete="off">
+
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+
+                            <div class="form-group col-md-4">
+                                <label for="doctors">Doctors</label>
+                                <select id="doctors" class="form-control" formControlName='doctors' [ngClass]="{ 'is-invalid': submitted && f1.doctors.errors }">
+                                    <option value="" selected>select doctors</option>
+                                    <option *ngFor="let doctor of doctorsResp" value={{doctor.doctorname}}>{{doctor.doctorname}}</option>
+                                </select>
+                                <div *ngIf="submitted && f1.doctors.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.doctors.errors.required">
+                                        Doctor Is Required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="age">Age</label>
+                                <input type="text" numbersOnly class="form-control" id="age" [ngClass]="{ 'is-invalid': submitted && f1.age.errors }" placeholder="enter age in years" autocomplete="off" formControlName='age'>
+                                <div *ngIf="submitted && f1.age.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.age.errors.required">
+                                        Age Is Required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="gender">Gender</label>
+                                <select id="gender" class="form-control" formControlName='gender' [ngClass]="{ 'is-invalid': submitted && f1.gender.errors }">
+                                    <option value="" selected>select gender</option>
+                                    <option value="MALE">Male</option>
+                                    <option value="FEMALE">Female</option>
+                                    <option value="TRANSGENDER">TRANSGENDER</option>
+                                </select>
+                                <div *ngIf="submitted && f1.gender.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.gender.errors.required">
+                                        Gender Is Required
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="cast">Cast</label>
+                                <select id="cast" class="form-control" formControlName='cast' [ngClass]="{ 'is-invalid': submitted && f1.cast.errors }">
+                                    <option value="" selected>select cast</option>
+                                    <option value="GENERAL">GENERAL</option>
+                                    <option value="OBC">OBC</option>
+                                    <option value="SC">SC</option>
+                                    <option value="ST">ST</option>
+                                </select>
+                                <div *ngIf="submitted && f1.cast.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.cast.errors.required">
+                                        Cast Is Required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="scheme">Scheme</label>
+                                <select id="scheme" class="form-control" formControlName='scheme' [ngClass]="{ 'is-invalid': submitted && f1.scheme.errors }">
+                                    <option value="" selected>select scheme</option>
+                                    <option value="APL ₹ 5.00">APL</option>
+                                    <option value="ANC ₹ 0.00">ANC</option>
+                                    <option value="Below Poverty Line ₹ 0.00">Below Poverty Line</option>
+                                    <option value="Bal Shakti Yozna ₹ 0.00">Bal Shakti Yozna</option>
+                                    <option value="Disabled >60% ₹ 0.00">Disabled >60%</option>
+                                    <option value="DEEN DAYAL YOJNA  ₹ 0.00">DEEN DAYAL YOJNA</option>
+                                    <option value="DELIVERY ₹ 0.00">DELIVERY</option>
+                                    <option value="FREEDOM FIGHTER ₹ 0.00">FREEDOM FIGHTER</option>
+                                    <option value="HOSPITAL STAFF ₹ 0.00">HOSPITAL STAFF</option>
+                                    <option value="MAJDOOR SURAKSHA YOJNA ₹ 0.00">MAJDOOR SURAKSHA YOJNA</option>
+                                    <option value="Retired Govt. Servant ₹ 0.00">Retired Govt. Servant</option>
+                                    <option value="MLC ₹ 0.00">MLC</option>
+                                    <option value="MISA BANDI ₹ 0.00">MISA BANDI</option>
+                                    <option value="MP RAJYA BIMARI SAHARA ₹ 0.00">MP RAJYA BIMARI SAHARA</option>
+                                    <option value="OLDAGE ₹ 0.00">OLDAGE</option>
+                                    <option value="OTHER ( ORDER BY MO ) ₹ 0.00">OTHER (BY MO)</option>
+                                    <option value="Thalassemia ₹ 0.00">Thalassemia</option>
+                                    <option value="STUDENT ₹ 0.00">STUDENT</option>
+
+                                </select>
+                                <div *ngIf="submitted && f1.scheme.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.scheme.errors.required">
+                                        Scheme Is Required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="aadharnumber">Aadhar Number</label>
+                                <input type="text" class="form-control" id="aadharnumber" placeholder="Enter Aadhar Number" formControlName='aadharnumber' autocomplete="off">
+                                <div *ngIf="submitted && aadharValidation" class="invalid-feedback">
+                                    <div *ngIf="aadharValidation">
+                                        Aadhar number should contain only numbers, and should be 12 digit number.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="refer">Refer</label>
+                                <input type="text" class="form-control" id="refer" placeholder="Refer" formControlName='refer' autocomplete="off">
+
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" id="address" placeholder="Address" [ngClass]="{ 'is-invalid': submitted && f1.address.errors }" formControlName='address' autocomplete="off">
+                                <div *ngIf="submitted && f1.address.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.address.errors.required">
+                                        Address Is Required
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="roomno">Department/Room No.</label>
+                                <select id="roomno" class="form-control" formControlName='roomno' [ngClass]="{ 'is-invalid': submitted && f1.roomno.errors }">
+                                    <option value="" selected>select room</option>
+                                    <option value="Room No.1">Room No.1
+                                    </option>
+
+                                </select>
+                                <div *ngIf="submitted && f1.roomno.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.roomno.errors.required">
+                                        Room No. Is Required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6" *ngIf="diseases!=null">
+                                <label for="disease">Diseases</label>
+                                <select id="disease" class="form-control" (change)="addPatientDiseases()" formControlName='patientdiseases' [ngClass]="{ 'is-invalid': submitted && f1.patientdiseases.errors }">
+                                    <option value="" selected>select diseases</option>
+                                    <option *ngFor="let data of diseases" value="{{data.disease_name}}">
+                                        {{data.disease_name}}</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="form-row text-center" st>
+                            <div class="form-group col-md-12" *ngIf="!addedDiseases.length">
+                                <p>Please Add Patient Disease.</p>
+                            </div>
+
+                            <div class="form-group col-md-12" *ngIf="addedDiseases.length>0">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th style="font-size: 15px" scope="col">#</th>
+                                            <th style="font-size: 15px" scope="col">Disease Name</th>
+                                            <th style="font-size: 15px" scope="col">Remove</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let data of addedDiseases;index as i">
+                                            <th scope="row">{{i+1}}</th>
+                                            <td>{{data}} </td>
+                                            <td style="padding-right: 46px;
+                                            width: 101px"><button (click)="removeDiseases(data)" type="button" class="close" aria-label="Close">
+                                                    <span aria-hidden="false">&times;</span>
+                                                </button></td>
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" (click)="submit()" class="btn btn-primary">Print</button>
+                    </form>
+
+
+                </div>
+                <!--/.span9-->
+            </div>
+        </div>
+        <!--/.container-->
+    </div>
+    <!--/.wrapper-->
+
+
+    <!-- <div id="myModal11" class="modal fade" *ngIf='showModel' role="dialog" [ngClass]="{'show':showModel}"
+    style="margin-top:-135px">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="height: 79.5vh;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" (click)="close()">&times;</button>
+                <h4 class="modal-title">Incoming Call Report For User </h4>
+                <button class="exportBtn2"
+                    (click)="exportAsXsls(incomingCallForUserResp.data,'incomin-call_report_for_user')"
+                    title="Download reprot in excel">Export</button>
+            </div>
+            <div class="modal-body" style="height: 405px;">
+                <div class="box-body">
+                    <div style="width:100%;height: 56vh;overflow-y: auto;" class="table-overflow" id="table-overflow">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sr.No.</th>
+                                    <th>Call Date</th>
+                                    <th>Length in Seconds</th>
+                                    <th>Phone Number</th>
+                                    <th>User</th>
+                                    <th>Comments</th>
+                                    <th>Queue Seconds</th>
+                                    <th>Recording</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of incomingCallForUserResp.data,let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{data.call_date}}</td>
+                                    <td>{{data.length_in_sec}}</td>
+                                    <td>{{data.phone_number}}</td>
+                                    <td>{{data.user}}</td>
+                                    <td>{{data.comments}}</td>
+                                    <td>{{data.queue_seconds}}</td>
+                                    <td><button title="Download Recording"><i class="fa fa-download"
+                                                aria-hidden="true"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><br>
+
+
+                </div>
+            </div>
+
+            <div class="modal-footer" style="padding: 30px;">
+                <button type="button" style="margin-top: 35px;" class="btn btn-default" (click)="close()"
+                    data-dismiss="modal">Close</button>
+            </div>
+
+
+        </div>
+    </div>
+</div> -->
+
+    <div class="footer" style="margin-top: 9px; margin-bottom: -30px;">
+        <div class="container">
+            <b class="copyright">&copy; 2022. Software developed and maintained by siddh services. </b>
+        </div>
+    </div>

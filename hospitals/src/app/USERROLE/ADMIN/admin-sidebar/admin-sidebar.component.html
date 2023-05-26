@@ -1,0 +1,57 @@
+<div class="col-md-3 setside" style="font-family: 'Josefin Sans', sans-serif;font-weight:lighter;">
+    <div class="sidebar">
+        <div class="sidebar-accordian">
+            <div class="btn-divs">
+                <button data-toggle="collapse" data-target="#navItem1">
+                    <a [routerLink]="['/admin-home']" class="">
+                        <i class="menu-icon fa fa-dashboard"></i>
+                      New Opd Registration
+                    </a>
+                </button>
+            </div>
+
+            <div class="btn-divs">
+                <button data-toggle="collapse" data-target="#navItem2" id="button2" (click)="animateIcon('button2')">
+                    <i class="menu-icon fa fa-retweet"></i>
+                    <i class="fa fa-angle-down pull-right-icon"></i>
+                    Report
+                </button>
+                <div id="navItem2" class="collapse">
+                    <ul>
+                        <li>
+                            <a [routerLink]="['/new-opd-report']">
+                                <i class="menu-icon fa fa-angle-right subicon"></i> New OPD Report
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/revisit-report']">
+                                <i class="menu-icon fa fa-angle-right subicon"></i> Patient Revisit Report
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/doctor-wise-report']">
+                                <i class="menu-icon fa fa-angle-right subicon"></i> Doctor Wise Report For New Registration
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/doctor-wise-report-revisit']">
+                                <i class="menu-icon fa fa-angle-right subicon"></i> Doctor Wise Report For Revisit Patient
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/backup']">
+                                <i class="menu-icon fa fa-angle-right subicon"></i> Take Backup
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <!--/.sidebar-->
+</div>
+<!--/.span3-->

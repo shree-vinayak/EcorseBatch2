@@ -1,0 +1,88 @@
+<div appNoRightClick class="header-div">
+
+    <div class="navbar-inner" style="font-family: 'Josefin Sans', sans-serif;">
+        <div class="inner-nav">
+
+            <div class="left-logo">
+                <a class="brand w-25" [routerLink]="['/admin-home']">
+                    <ul class="thunder">
+                        <li>H</li>
+                        <li>O</li>
+                        <li>S</li>
+                        <li>P</li>
+                        <li>I</li>
+                        <li>T</li>
+                        <li>A</li>
+                        <li>L</li>
+                    </ul>
+                </a>
+            </div>
+
+            <div class="pull-left text-center xs-hidden heading">
+                <h2 class="mpeb">प्राथमिक स्वास्थ्य केंद्र पिछोर, जिला ग्वालियर ( मध्य प्रदेश )</h2>
+            </div>
+
+            <div class="right-user-icon">
+                <ul class="nav pull-right user">
+                    <li class="nav-user dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="assets/img/user.png" class="nav-avatar" />{{username}}(v0.1)
+                            <b class="caret" style="margin-bottom:10px;border-top-color: black;"></b>
+                        </a>
+                        <ul class="dropdown-menu" style="margin-top: 70px;">
+                            <li class="divider"></li>
+                            <li><a (click)="showChangePasswordModel()">Change Password</a></li>
+                            <li><a (click)='logout()'>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.nav-collapse -->
+        </div>
+    </div>
+    <!-- /navbar-inner -->
+</div>
+<!-- /navbar -->
+
+
+<div id="myModal11" class="modal fade" role="dialog" [ngClass]="{'show':showModel}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" (click)="change()">&times;</button>
+                <h4 class="modal-title">Change Password Form</h4>
+            </div>
+            <div class="modal-body">
+                <div class="box-body">
+                    <form class="form-horizontal row-fluid" [formGroup]="passwordChangeForm">
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Old Password </label>
+                            <div class="controls">
+                                <input type="text" class="span6" id="password" formControlName='password' [ngClass]="{ 'is-invalid': submitted && f1.password.errors }" />
+                                <div *ngIf="submitted && f1.password.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.password.errors.required">Password is required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput"> New Password </label>
+                            <div class="controls">
+                                <input type="text" class="span6" id="newPassword" formControlName='newPassword' [ngClass]="{ 'is-invalid': submitted && f1.newPassword.errors }" />
+                                <div *ngIf="submitted && f1.newPassword.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.newPassword.errors.required">New Password is required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default" (click)="submitForm()" data-dismiss="modal">Submit</button>
+            </div>
+
+        </div>
+    </div>
+</div>

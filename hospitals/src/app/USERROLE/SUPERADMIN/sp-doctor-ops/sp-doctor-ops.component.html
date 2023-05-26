@@ -1,0 +1,101 @@
+<app-sp-header></app-sp-header>
+<div class="wrapper" appNoRightClick>
+    <div class="loader" *ngIf='loader'></div>
+    <div class="container-fluid">
+        <div class="outerContent">
+
+            <app-sp-sidebar></app-sp-sidebar>
+
+            <div class="col-md-9">
+
+                <div class="content" style="    min-height: 500px">
+
+                    <div style="text-align: center;color: black;text-transform: uppercase;font-weight: bolder;
+                    letter-spacing: 0.4px;margin-bottom:18px; margin-top: 10px">
+                        <h4><b>Register Patient Details
+                                <hr> </b></h4>
+                    </div>
+
+                    <form [formGroup]="doctorOpsForm">
+
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="doctorname">Doctor Name</label>
+                                <input type="text" class="form-control" id="doctorname" placeholder="Doctor Name" [ngClass]="{ 'is-invalid': submitted && f1.doctorname.errors }" formControlName='doctorname' autocomplete="off">
+                                <div *ngIf="submitted && f1.doctorname.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.doctorname.errors.required">
+                                        Name Is Required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="address">Father/Husband Name</label>
+                                <input type="text" class="form-control" id="address" placeholder="Father/Husband Name" [ngClass]="{ 'is-invalid': submitted && f1.address.errors }" formControlName='address' autocomplete="off">
+                                <div *ngIf="submitted && f1.address.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.address.errors.required">
+                                        Address Is Required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="mobileNo">Mobile No.</label>
+                                <input type="text" class="form-control" id="mobileNo" autocomplete="off" placeholder="Mobile No" formControlName='mobileNo' autocomplete="off">
+                                <div *ngIf="submitted && f1.mobileNo.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.mobileNo.errors.required">
+                                        Mobile Is Required
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <button type="submit" (click)="submit()" class="btn btn-primary">Add</button>
+                    </form>
+
+                    <div *ngIf="doctorResp" class="reports-div">
+                        <div class="text-center reports-header">
+                            <h4>Doctors List</h4>
+                            <button class="exportBtn" title="Download reprot in excel">Export</button>
+                        </div>
+
+                        <div class="table-overflow" id="table-overflow">
+                            <table class="table table-responsive table-bordered custab">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Address</th>
+                                        <th>Mobile</th>
+                                        <th colspan="2">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let doctor of doctorResp;let i = index">
+                                    <th>{{doctor.doctorname}}</th>
+                                    <th>{{doctor.mobileNo}}</th>
+                                    <th>{{doctor.address}}</th>
+                                    <th><button class="btn btn-warning">Update</button></th>
+                                    <th><button on-click="deleteDoctors(doctor)" class="btn btn-danger">Delete</button></th>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <!--/.span9-->
+            </div>
+        </div>
+        <!--/.container-->
+    </div>
+    <!--/.wrapper-->
+
+
+
+
+    <div class="footer" style="margin-top: 9px; margin-bottom: -30px;">
+        <div class="container">
+            <b class="copyright">&copy; 2022. Software developed and maintained by siddh services. </b>
+        </div>
+    </div>
